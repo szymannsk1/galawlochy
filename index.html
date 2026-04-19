@@ -3,117 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>F4L - Fight For Legacy</title>
+  <title>F4L • Fight For Legacy | 15.05.2026 • Arena Gliwice</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Impact&display=swap');
-    
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+    :root {
+      --red: #ff0022;
+    }
+
     body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .title-font {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .logo-font {
       font-family: 'Anton', sans-serif;
     }
-    
+
     .hero-bg {
-      background-image: url('f4l-hero.jpg');
+      background-image: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.85)), url('f4l-hero.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: center 30%;
       background-attachment: fixed;
     }
-    
-    .neon-red {
+
+    .neon-glow {
       text-shadow: 
-        0 0 10px #ff0000,
-        0 0 20px #ff0000,
-        0 0 40px #ff0000;
+        0 0 15px rgb(255 0 34),
+        0 0 30px rgb(255 0 34),
+        0 0 50px rgb(255 0 34);
+    }
+
+    .fight-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    .fight-box {
-      background: linear-gradient(145deg, #18181b, #27272a);
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+    .fight-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 40px 60px -20px rgb(255 0 34 / 0.3);
+    }
+
+    .vs-glow {
+      animation: vsPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes vsPulse {
+      0%, 100% { text-shadow: 0 0 20px #ff0022; }
+      50% { text-shadow: 0 0 50px #ff0022, 0 0 80px #ff0022; }
     }
   </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-[#0a0a0a] text-white">
 
-  <!-- HERO z Twoim logo w tle -->
-  <section class="hero-bg min-h-screen flex items-center justify-center relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
+  <!-- HERO -->
+  <section class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/60 to-[#0a0a0a]"></div>
     
-    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
-      <h1 class="text-[160px] md:text-[220px] font-black tracking-[-8px] leading-none neon-red text-red-600">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+      <!-- Logo -->
+      <h1 class="logo-font text-[180px] md:text-[260px] leading-none font-black tracking-[-12px] text-[#ff0022] neon-glow">
         F4L
       </h1>
-      <p class="text-5xl md:text-7xl font-black tracking-widest mt-2 text-white">FIGHT FOR LEGACY</p>
       
-      <div class="mt-12 flex justify-center gap-8 text-xl md:text-2xl font-medium">
+      <!-- Nazwa gali -->
+      <p class="title-font text-6xl md:text-8xl font-bold tracking-[6px] mt-[-30px] text-white">
+        FIGHT FOR LEGACY
+      </p>
+
+      <!-- Data i miejsce -->
+      <div class="flex justify-center items-center gap-8 mt-8 text-3xl md:text-4xl font-medium tracking-widest">
         <div>15 MAJA 2026</div>
-        <div class="text-red-500">•</div>
+        <div class="w-3 h-3 bg-[#ff0022] rounded-full"></div>
         <div>ARENA GLIWICE</div>
       </div>
+
+      <!-- Przycisk bilety -->
+      <a href="#" 
+         class="mt-16 inline-flex items-center gap-4 bg-[#ff0022] hover:bg-white hover:text-black text-3xl font-bold title-font tracking-widest px-16 py-7 rounded-2xl transition-all duration-300 shadow-2xl shadow-[#ff0022]/50">
+        <i class="fa-solid fa-ticket"></i>
+        KUP BILETY NA GALĘ
+      </a>
+    </div>
+
+    <!-- Subtelny pasek na dole hero -->
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-sm tracking-[3px] font-medium flex items-center gap-3">
+      <div class="h-px w-12 bg-white/30"></div>
+      KSW • UFC • FAME LEVEL
+      <div class="h-px w-12 bg-white/30"></div>
     </div>
   </section>
 
   <!-- KARTA WALK -->
-  <section class="py-20 bg-zinc-950">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-7xl font-black text-center tracking-widest text-red-600 mb-16">KARTA WALK</h2>
+  <section class="py-24 bg-[#111111]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="title-font text-8xl font-bold text-center tracking-widest text-[#ff0022] mb-20">
+        KARTA WALK
+      </h2>
 
       <!-- MAIN EVENT -->
-      <div class="fight-box rounded-3xl p-10 mb-12">
+      <div class="fight-card bg-[#1a1a1a] rounded-3xl p-12 mb-12 border border-[#ff0022]/10">
         <div class="flex justify-center mb-8">
-          <div class="bg-red-600 text-white text-sm font-black tracking-widest px-10 py-3 rounded-full">
-            MAIN EVENT
-          </div>
+          <span class="bg-[#ff0022] text-white text-lg font-bold title-font tracking-[2px] px-12 py-4 rounded-3xl">MAIN EVENT</span>
         </div>
         
-        <div class="grid md:grid-cols-3 items-center gap-8">
+        <div class="grid md:grid-cols-3 gap-8 items-center">
           <!-- Fighter 1 -->
           <div class="text-center md:text-right">
-            <div class="text-4xl md:text-5xl font-black leading-none">JAN "KOWBOJ"</div>
-            <div class="text-4xl md:text-5xl font-black leading-none text-white">KOWALCZYK</div>
-            <div class="text-zinc-400 mt-3 text-xl">18-3 • Heavyweight</div>
+            <img src="https://picsum.photos/id/1015/800/1000" 
+                 alt="Jan Kowboj Kowalczyk"
+                 class="mx-auto md:ml-auto w-64 h-80 object-cover rounded-2xl border-4 border-[#ff0022]/30 shadow-2xl">
+            <div class="mt-8">
+              <div class="title-font text-5xl font-bold leading-none">JAN "KOWBOJ"</div>
+              <div class="title-font text-5xl font-bold leading-none text-white">KOWALCZYK</div>
+              <div class="text-zinc-400 mt-3 text-xl">18-3 • Heavyweight</div>
+            </div>
           </div>
 
           <!-- VS -->
-          <div class="flex flex-col items-center">
-            <div class="text-8xl font-black text-red-600 tracking-widest neon-red">VS</div>
+          <div class="flex flex-col items-center justify-center">
+            <div class="text-[140px] font-black text-[#ff0022] logo-font vs-glow leading-none">VS</div>
           </div>
 
           <!-- Fighter 2 -->
           <div class="text-center md:text-left">
-            <div class="text-4xl md:text-5xl font-black leading-none">TOMASZ "GÓRNIK"</div>
-            <div class="text-4xl md:text-5xl font-black leading-none text-white">NOWAK</div>
-            <div class="text-zinc-400 mt-3 text-xl">22-4 • Heavyweight</div>
+            <img src="https://picsum.photos/id/201/800/1000" 
+                 alt="Tomasz Górnik Nowak"
+                 class="mx-auto md:mr-auto w-64 h-80 object-cover rounded-2xl border-4 border-[#ff0022]/30 shadow-2xl">
+            <div class="mt-8">
+              <div class="title-font text-5xl font-bold leading-none">TOMASZ "GÓRNIK"</div>
+              <div class="title-font text-5xl font-bold leading-none text-white">NOWAK</div>
+              <div class="text-zinc-400 mt-3 text-xl">22-4 • Heavyweight</div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- CO-MAIN EVENT -->
-      <div class="fight-box rounded-3xl p-10">
+      <div class="fight-card bg-[#1a1a1a] rounded-3xl p-12 border border-[#ff0022]/10">
         <div class="flex justify-center mb-8">
-          <div class="bg-red-600/80 text-white text-sm font-black tracking-widest px-10 py-3 rounded-full">
-            CO-MAIN EVENT
-          </div>
+          <span class="bg-[#ff0022]/90 text-white text-lg font-bold title-font tracking-[2px] px-12 py-4 rounded-3xl">CO-MAIN EVENT</span>
         </div>
         
-        <div class="grid md:grid-cols-3 items-center gap-8">
+        <div class="grid md:grid-cols-3 gap-8 items-center">
           <!-- Fighter 1 -->
           <div class="text-center md:text-right">
-            <div class="text-4xl md:text-5xl font-black leading-none">MIKE "THE BEAST"</div>
-            <div class="text-4xl md:text-5xl font-black leading-none text-white">ZIELIŃSKI</div>
-            <div class="text-zinc-400 mt-3 text-xl">Welterweight • 3 rundy</div>
+            <img src="https://picsum.photos/id/1005/800/1000" 
+                 alt="Mike The Beast Zieliński"
+                 class="mx-auto md:ml-auto w-56 h-72 object-cover rounded-2xl border-4 border-[#ff0022]/20 shadow-2xl">
+            <div class="mt-8">
+              <div class="title-font text-4xl font-bold leading-none">MIKE "THE BEAST"</div>
+              <div class="title-font text-4xl font-bold leading-none text-white">ZIELIŃSKI</div>
+              <div class="text-zinc-400 mt-3 text-xl">Welterweight • 3 rundy</div>
+            </div>
           </div>
 
           <!-- VS -->
-          <div class="flex flex-col items-center">
-            <div class="text-8xl font-black text-red-600 tracking-widest neon-red">VS</div>
+          <div class="flex flex-col items-center justify-center">
+            <div class="text-[110px] font-black text-[#ff0022] logo-font vs-glow leading-none">VS</div>
           </div>
 
           <!-- Fighter 2 -->
           <div class="text-center md:text-left">
-            <div class="text-4xl md:text-5xl font-black leading-none">PAWEŁ "NINJA"</div>
-            <div class="text-4xl md:text-5xl font-black leading-none text-white">KAMIŃSKI</div>
-            <div class="text-zinc-400 mt-3 text-xl">Welterweight • 3 rundy</div>
+            <img src="https://picsum.photos/id/29/800/1000" 
+                 alt="Paweł Ninja Kamiński"
+                 class="mx-auto md:mr-auto w-56 h-72 object-cover rounded-2xl border-4 border-[#ff0022]/20 shadow-2xl">
+            <div class="mt-8">
+              <div class="title-font text-4xl font-bold leading-none">PAWEŁ "NINJA"</div>
+              <div class="title-font text-4xl font-bold leading-none text-white">KAMIŃSKI</div>
+              <div class="text-zinc-400 mt-3 text-xl">Welterweight • 3 rundy</div>
+            </div>
           </div>
         </div>
       </div>
@@ -121,10 +184,22 @@
   </section>
 
   <!-- STOPKA -->
-  <footer class="bg-black py-12 text-center border-t border-zinc-800">
-    <p class="text-3xl font-black tracking-widest text-red-600">F4L • FIGHT FOR LEGACY</p>
-    <p class="text-zinc-500 mt-3">© 2026 • Wszystkie prawa zastrzeżone</p>
+  <footer class="bg-black py-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="title-font text-5xl tracking-widest text-[#ff0022]">F4L • FIGHT FOR LEGACY</p>
+      <p class="text-zinc-500 mt-4">© 2026 Fight For Legacy. Wszystkie prawa zastrzeżone.</p>
+      <p class="text-xs text-zinc-600 mt-8">Strona stworzona z miłością do polskiego MMA</p>
+    </div>
   </footer>
 
+  <script>
+    // Tailwind script
+    tailwind.config = {
+      content: [],
+      theme: {
+        extend: {}
+      }
+    }
+  </script>
 </body>
 </html>
