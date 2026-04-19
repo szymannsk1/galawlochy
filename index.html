@@ -1,606 +1,220 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F4L • Fight For Legacy | 15 Maja 2026 • Arena Gliwice</title>
+    <title>F4L - FIGHT FOR LEGACY | 15 Maja 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        f4l: {
+                            red: '#e30613',
+                            dark: '#050505',
+                            card: '#0f0f0f',
+                            gray: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        bebas: ['"Bebas Neue"', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'arena': "linear-gradient(to bottom, rgba(5,5,5,0.3), rgba(5,5,5,1)), url('https://images.unsplash.com/photo-1577471488278-16eec37ffcc2?q=80&w=1920&auto=format&fit=crop')",
+                        'noise': "url('https://www.transparenttextures.com/patterns/stardust.png')"
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap');
+        /* Customowe efekty Premium */
+        body { background-color: #050505; color: white; overflow-x: hidden; }
         
-        :root {
-            --f4l-red: #e30613;
-        }
+        .glow-text { text-shadow: 0 0 20px rgba(227, 6, 19, 0.6); }
+        .glow-box { box-shadow: 0 0 40px rgba(227, 6, 19, 0.15); }
         
-        body {
-            font-family: 'Inter', system_ui, sans-serif;
-        }
+        /* Animacje wejścia */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        .font-anton { font-family: 'Anton', sans-serif; }
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-        
-        .neon-red {
-            text-shadow: 
-                0 0 10px #e30613,
-                0 0 20px #e30613,
-                0 0 40px #e30613;
-        }
-        
-        .premium-shadow {
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4),
-                        0 10px 10px -6px rgb(0 0 0 / 0.4);
-        }
-        
-        .fighter-img {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5),
-                        0 4px 6px -4px rgb(0 0 0 / 0.5);
-        }
-        
-        .fighter-img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 25px -5px rgb(227 6 19 / 0.15),
-                        0 8px 10px -6px rgb(227 6 19 / 0.15);
-        }
-        
-        .vs-glow {
-            animation: vs-pulse 2s ease-in-out infinite;
-            text-shadow: 
-                0 0 15px #e30613,
-                0 0 30px #e30613,
-                0 0 50px #e30613;
-        }
-        
-        @keyframes vs-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.92; }
-        }
-        
-        .section-header {
-            font-size: clamp(3.5rem, 8vw, 6.5rem);
-            line-height: 0.9;
-            letter-spacing: -0.04em;
-        }
-        
-        .fight-card {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .fight-card:hover {
-            transform: translateY(-4px);
-        }
-        
-        .nav-active {
-            color: #e30613;
-            position: relative;
-        }
-        
-        .nav-active::after {
+        /* Gradientowe odcięcie zdjęć zawodników, żeby wtapiały się w tło */
+        .fighter-img-wrapper::after {
             content: '';
             position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right, #e30613, transparent);
+            bottom: 0; left: 0; right: 0;
+            height: 40%;
+            background: linear-gradient(to top, #0f0f0f 0%, transparent 100%);
         }
-        
-        .cinematic-bg {
-            background: linear-gradient(rgba(10, 10, 10, 0.82), rgba(10, 10, 10, 0.88)),
-                        url('https://picsum.photos/id/1018/2000/1200') center/cover no-repeat;
+
+        /* Przycisk Premium */
+        .btn-premium {
+            background: linear-gradient(90deg, #b3000a 0%, #e30613 50%, #b3000a 100%);
+            background-size: 200% auto;
+            transition: 0.5s;
         }
-        
-        .premium-text {
-            font-weight: 700;
-            letter-spacing: -0.025em;
-        }
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .stat-pill {
-            background: rgba(17, 17, 17, 0.6);
-            backdrop-filter: blur(12px);
+        .btn-premium:hover {
+            background-position: right center;
+            box-shadow: 0 0 25px rgba(227, 6, 19, 0.6);
         }
     </style>
 </head>
-<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-lg border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo -->
-            <div class="flex items-center gap-x-3">
-                <div class="flex items-center">
-                    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8L26 26L44 8" stroke="#e30613" stroke-width="6" stroke-linejoin="round"/>
-                        <path d="M8 44L26 26L44 44" stroke="#e30613" stroke-width="6" stroke-linejoin="round"/>
-                        <circle cx="26" cy="26" r="9" fill="#e30613"/>
-                    </svg>
-                </div>
-                <div>
-                    <span class="font-anton text-4xl tracking-tighter text-white">F4L</span>
-                </div>
-            </div>
-            
-            <!-- Menu -->
-            <div class="hidden md:flex items-center gap-x-10 text-sm font-medium tracking-widest">
-                <a href="#karta-walk" class="hover:text-[#e30613] transition-colors">KARTA WALK</a>
-                <a href="#bilety" class="hover:text-[#e30613] transition-colors">BILETY</a>
-                <a href="#" class="hover:text-[#e30613] transition-colors">O GALI</a>
-            </div>
-            
-            <!-- CTA Button -->
-            <button onclick="document.getElementById('bilety').scrollIntoView({ behavior: 'smooth' })" 
-                    class="px-8 py-3.5 bg-[#e30613] hover:bg-[#c30410] active:bg-[#a1030d] text-white font-semibold text-sm tracking-[1px] rounded-full flex items-center gap-x-2 transition-all hover:shadow-[0_0_25px_rgb(227,6,19,0.5)]">
-                <span>KUP BILETY</span>
-            </button>
-        </div>
-    </nav>
+<body class="font-montserrat text-white antialiased">
 
-    <!-- HERO SECTION -->
-    <header class="relative h-screen flex items-center justify-center cinematic-bg pt-20">
-        <div class="absolute inset-0 bg-[radial-gradient(#e30613_0.8px,transparent_1px)] bg-[length:4px_4px] opacity-10"></div>
+    <div class="fixed inset-0 pointer-events-none opacity-20 bg-noise z-50"></div>
+
+    <header class="relative w-full min-h-screen flex flex-col justify-center items-center text-center bg-arena bg-cover bg-center bg-no-repeat overflow-hidden px-4">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-f4l-red rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
         
-        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <!-- Logo + Title -->
-            <div class="mb-8">
-                <div class="inline-flex items-center justify-center mb-4">
-                    <div class="px-6 py-1.5 border border-[#e30613]/60 rounded-full text-xs tracking-[3px] font-medium text-[#e30613]">OFICJALNA STRONA GALI</div>
-                </div>
-                
-                <h1 class="font-anton text-[120px] md:text-[160px] leading-[0.82] tracking-tighter mb-2">
-                    <span class="text-[#e30613] neon-red">F4L</span>
-                </h1>
-                <div class="font-oswald text-7xl md:text-[92px] tracking-[-3.5px] leading-none mb-6">
-                    FIGHT FOR LEGACY
-                </div>
-            </div>
+        <div class="relative z-10 reveal active">
+            <h1 class="font-bebas text-8xl md:text-[12rem] leading-none tracking-tighter text-f4l-red glow-text mb-2 drop-shadow-2xl">
+                F4L
+            </h1>
+            <h2 class="font-bebas text-4xl md:text-6xl tracking-[0.2em] mb-6">
+                FIGHT FOR LEGACY
+            </h2>
             
-            <!-- Date & Venue -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-x-4 gap-y-2 text-xl md:text-2xl tracking-[1.5px] font-light">
-                <div class="flex items-center gap-x-3">
-                    <span class="text-[#e30613]">15 MAJA 2026</span>
-                    <span class="text-white/40">•</span>
-                    <span>ARENA GLIWICE</span>
-                </div>
+            <div class="flex items-center justify-center gap-4 text-f4l-gray text-sm md:text-lg font-semibold tracking-widest uppercase mb-10">
+                <span>15 MAJA 2026</span>
+                <span class="w-1.5 h-1.5 bg-f4l-red rounded-full glow-text"></span>
+                <span>ARENA GLIWICE</span>
             </div>
-            
-            <!-- Countdown -->
-            <div class="mt-10 flex justify-center">
-                <div class="stat-pill px-8 py-4 rounded-2xl border border-white/10 flex items-center gap-x-8 text-center">
-                    <div>
-                        <div id="days" class="font-oswald text-4xl font-semibold tabular-nums">26</div>
-                        <div class="text-[10px] tracking-widest text-white/60">DNI</div>
-                    </div>
-                    <div class="w-px h-8 bg-white/20"></div>
-                    <div>
-                        <div id="hours" class="font-oswald text-4xl font-semibold tabular-nums">14</div>
-                        <div class="text-[10px] tracking-widest text-white/60">GODZIN</div>
-                    </div>
-                    <div class="w-px h-8 bg-white/20"></div>
-                    <div>
-                        <div id="minutes" class="font-oswald text-4xl font-semibold tabular-nums">37</div>
-                        <div class="text-[10px] tracking-widest text-white/60">MINUT</div>
-                    </div>
-                </div>
-            </div>
+
+            <a href="#karta-walk" class="btn-premium inline-block px-10 py-4 font-bebas text-2xl tracking-wider rounded uppercase">
+                Zobacz Kartę Walk
+            </a>
         </div>
         
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <div class="text-xs tracking-[2px] text-white/50 mb-1.5">PRZEWIŃ</div>
-            <div class="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"></div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
     </header>
 
-    <!-- KARTA WALK SECTION -->
-    <section id="karta-walk" class="max-w-7xl mx-auto px-6 pt-20 pb-24">
-        <div class="text-center mb-16">
-            <div class="inline-block px-5 py-1.5 bg-[#e30613] text-xs tracking-[2.5px] font-semibold mb-4 rounded-full">OFICJALNA KARTA WALK</div>
-            <h2 class="font-anton section-header tracking-tighter text-white">KARTA WALK</h2>
-            <p class="max-w-md mx-auto mt-4 text-lg text-white/70">15 Maja 2026 • Arena Gliwice • 20:00</p>
-        </div>
-
-        <!-- MAIN EVENT -->
-        <div class="mb-12">
-            <div class="flex items-center gap-x-4 mb-6 px-1">
-                <div class="px-5 py-1.5 bg-[#e30613] text-sm font-bold tracking-widest rounded-full flex items-center gap-x-2">
-                    <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                    MAIN EVENT
-                </div>
-                <div class="flex-1 h-px bg-gradient-to-r from-[#e30613]/60 to-transparent"></div>
-            </div>
-            
-            <div class="fight-card bg-[#111111] border border-[#e30613]/20 rounded-3xl overflow-hidden premium-shadow">
-                <div class="grid md:grid-cols-5 items-center">
-                    <!-- Left Fighter -->
-                    <div class="md:col-span-2 p-8 md:p-10">
-                        <div class="relative group">
-                            <img src="https://picsum.photos/id/1005/700/900" 
-                                 class="fighter-img w-full aspect-[4/5] object-cover rounded-2xl border border-[#e30613]/30"
-                                 alt="Jan 'Kowboj' Kowalczyk - Heavyweight MMA Fighter">
-                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent rounded-b-2xl"></div>
-                            <div class="absolute bottom-5 left-5">
-                                <div class="text-sm text-white/70">18-3 • HEAVYWEIGHT</div>
-                            </div>
-                        </div>
-                        <div class="mt-6">
-                            <div class="font-oswald text-4xl md:text-[42px] leading-none tracking-tighter">JAN<br>"KOWBOJ"<br>KOWALCZYK</div>
-                            <div class="mt-1 text-[#e30613] text-sm tracking-[1px]">POLSKA</div>
-                        </div>
-                    </div>
-                    
-                    <!-- VS -->
-                    <div class="md:col-span-1 flex justify-center items-center py-8 md:py-0">
-                        <div class="text-center">
-                            <div class="font-anton text-[92px] md:text-[120px] leading-none text-[#e30613] vs-glow tracking-[-6px]">VS</div>
-                            <div class="text-xs text-white/50 tracking-[3px] -mt-3">HEAVYWEIGHT</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Fighter -->
-                    <div class="md:col-span-2 p-8 md:p-10 md:text-right">
-                        <div class="relative group md:ml-auto md:w-full">
-                            <img src="https://picsum.photos/id/1011/700/900" 
-                                 class="fighter-img w-full aspect-[4/5] object-cover rounded-2xl border border-[#e30613]/30"
-                                 alt="Tomasz 'Górnik' Nowak - Heavyweight MMA Fighter">
-                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent rounded-b-2xl"></div>
-                            <div class="absolute bottom-5 right-5 md:text-right">
-                                <div class="text-sm text-white/70">22-4 • HEAVYWEIGHT</div>
-                            </div>
-                        </div>
-                        <div class="mt-6 md:text-right">
-                            <div class="font-oswald text-4xl md:text-[42px] leading-none tracking-tighter">TOMASZ<br>"GÓRNIK"<br>NOWAK</div>
-                            <div class="mt-1 text-[#e30613] text-sm tracking-[1px]">POLSKA</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CO-MAIN EVENT -->
-        <div>
-            <div class="flex items-center gap-x-4 mb-6 px-1">
-                <div class="px-5 py-1.5 bg-white/10 text-sm font-bold tracking-widest rounded-full flex items-center gap-x-2 border border-white/20">
-                    CO-MAIN EVENT
-                </div>
-                <div class="flex-1 h-px bg-gradient-to-r from-white/20 to-transparent"></div>
-            </div>
-            
-            <div class="fight-card bg-[#111111] border border-white/10 rounded-3xl overflow-hidden premium-shadow">
-                <div class="grid md:grid-cols-5 items-center">
-                    <!-- Left Fighter -->
-                    <div class="md:col-span-2 p-7 md:p-9">
-                        <div class="relative group">
-                            <img src="https://picsum.photos/id/102/700/900" 
-                                 class="fighter-img w-full aspect-[4/5] object-cover rounded-2xl border border-white/20"
-                                 alt="Mike 'The Beast' Zieliński - Welterweight MMA Fighter">
-                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent rounded-b-2xl"></div>
-                            <div class="absolute bottom-5 left-5">
-                                <div class="text-xs text-white/60">WELTERWEIGHT • 3 RUNDY</div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <div class="font-oswald text-[32px] leading-none tracking-tighter">MIKE<br>"THE BEAST"<br>ZIELIŃSKI</div>
-                            <div class="mt-0.5 text-[#e30613] text-xs tracking-widest">18-5</div>
-                        </div>
-                    </div>
-                    
-                    <!-- VS -->
-                    <div class="md:col-span-1 flex justify-center items-center py-6 md:py-0">
-                        <div class="text-center">
-                            <div class="font-anton text-[72px] text-[#e30613] vs-glow tracking-[-3px]">VS</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Fighter -->
-                    <div class="md:col-span-2 p-7 md:p-9 md:text-right">
-                        <div class="relative group md:ml-auto md:w-full">
-                            <img src="https://picsum.photos/id/106/700/900" 
-                                 class="fighter-img w-full aspect-[4/5] object-cover rounded-2xl border border-white/20"
-                                 alt="Paweł 'Ninja' Kamiński - Welterweight MMA Fighter">
-                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent rounded-b-2xl"></div>
-                            <div class="absolute bottom-5 right-5 md:text-right">
-                                <div class="text-xs text-white/60">WELTERWEIGHT • 3 RUNDY</div>
-                            </div>
-                        </div>
-                        <div class="mt-5 md:text-right">
-                            <div class="font-oswald text-[32px] leading-none tracking-tighter">PAWEŁ<br>"NINJA"<br>KAMIŃSKI</div>
-                            <div class="mt-0.5 text-[#e30613] text-xs tracking-widest">21-6</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <main id="karta-walk" class="relative bg-f4l-dark py-24 px-4 z-20">
         
-        <div class="text-center mt-8 text-xs text-white/50 tracking-widest">PEŁNA KARTA WALK • 8 WALK • 4 TYTUŁOWE</div>
-    </section>
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="font-bebas text-6xl md:text-8xl text-white tracking-widest inline-block relative">
+                    KARTA WALK
+                    <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-f4l-red glow-text"></div>
+                </h2>
+            </div>
 
-    <!-- BILETY SECTION -->
-    <section id="bilety" class="bg-[#111111] py-20 border-t border-white/10">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-14">
-                <div class="text-[#e30613] text-sm tracking-[3px] font-semibold mb-3">LIMITED CAPACITY • 8200 MIEJSC</div>
-                <h3 class="font-oswald text-6xl tracking-tighter">ZABEZPIECZ SWOJE MIEJSCE</h3>
-                <p class="mt-4 text-xl text-white/70 max-w-md mx-auto">Ceny rosną z każdym tygodniem. Im wcześniej, tym taniej.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- VIP -->
-                <div class="bg-[#0a0a0a] border border-[#e30613]/40 rounded-3xl p-9 flex flex-col">
-                    <div>
-                        <div class="text-[#e30613] text-xs tracking-[2px]">NAJLEPSZE MIEJSCA</div>
-                        <div class="font-oswald text-5xl mt-3 tracking-tighter">499 zł</div>
-                    </div>
-                    <div class="mt-auto pt-8">
-                        <ul class="space-y-3 text-sm">
-                            <li class="flex items-center gap-x-3"><span class="text-[#e30613]">●</span> 1. rząd, ringside</li>
-                            <li class="flex items-center gap-x-3"><span class="text-[#e30613]">●</span> Meet &amp; Greet z zawodnikami</li>
-                            <li class="flex items-center gap-x-3"><span class="text-[#e30613]">●</span> VIP Lounge + open bar</li>
-                            <li class="flex items-center gap-x-3"><span class="text-[#e30613]">●</span> Ekskluzywny merch</li>
-                        </ul>
-                        <button onclick="buyTicket('VIP')" 
-                                class="mt-8 w-full py-4 bg-[#e30613] hover:bg-white hover:text-black transition-all font-semibold tracking-widest text-sm rounded-2xl">
-                            KUP VIP BILET
-                        </button>
-                    </div>
+            <div class="mb-16 reveal relative">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 z-30">
+                    <span class="bg-f4l-red text-white font-bebas px-6 py-2 text-2xl tracking-widest rounded-sm shadow-[0_0_15px_rgba(227,6,19,0.5)]">MAIN EVENT</span>
                 </div>
-                
-                <!-- Standard -->
-                <div class="bg-[#0a0a0a] border border-white/10 rounded-3xl p-9 flex flex-col relative">
-                    <div class="absolute -top-3 right-6 bg-white text-black text-xs px-3 py-px font-bold tracking-widest">NAJPOPULARNIEJSZE</div>
-                    <div>
-                        <div class="text-white/80 text-xs tracking-[2px]">STANDARD</div>
-                        <div class="font-oswald text-5xl mt-3 tracking-tighter">199 zł</div>
-                    </div>
-                    <div class="mt-auto pt-8">
-                        <ul class="space-y-3 text-sm text-white/80">
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Dobre miejsca (sektory A–D)</li>
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Dostęp do strefy kibica</li>
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Oficjalny program gali</li>
-                        </ul>
-                        <button onclick="buyTicket('Standard')" 
-                                class="mt-8 w-full py-4 bg-white hover:bg-[#e30613] hover:text-white text-black transition-all font-semibold tracking-widest text-sm rounded-2xl">
-                            KUP BILET STANDARD
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Student -->
-                <div class="bg-[#0a0a0a] border border-white/10 rounded-3xl p-9 flex flex-col">
-                    <div>
-                        <div class="text-white/80 text-xs tracking-[2px]">STUDENT / UCZEŃ</div>
-                        <div class="font-oswald text-5xl mt-3 tracking-tighter">129 zł</div>
-                    </div>
-                    <div class="mt-auto pt-8">
-                        <ul class="space-y-3 text-sm text-white/80">
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Miejsca w sektorach górnych</li>
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Legitymacja wymagana przy wejściu</li>
-                        </ul>
-                        <button onclick="buyTicket('Student')" 
-                                class="mt-8 w-full py-4 border border-white/30 hover:bg-white/10 transition-all font-semibold tracking-widest text-sm rounded-2xl">
-                            KUP BILET STUDENT
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-8 text-xs text-white/50">Bilety dostępne wyłącznie przez oficjalną stronę • Płatność kartą / BLIK / Przelewy24</div>
-        </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-black py-14 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-y-10">
-            <div>
-                <div class="flex items-center gap-x-3 mb-4">
-                    <svg width="38" height="38" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8L26 26L44 8" stroke="#e30613" stroke-width="5" stroke-linejoin="round"/>
-                        <path d="M8 44L26 26L44 44" stroke="#e30613" stroke-width="5" stroke-linejoin="round"/>
-                        <circle cx="26" cy="26" r="7" fill="#e30613"/>
-                    </svg>
-                    <span class="font-anton text-3xl tracking-tighter">F4L</span>
-                </div>
-                <div class="text-sm text-white/60 max-w-xs">Fight For Legacy to największa i najbardziej prestiżowa gala MMA w Polsce.</div>
-            </div>
-            
-            <div class="flex flex-col md:flex-row md:justify-end gap-y-10 md:gap-x-16 text-sm">
-                <div>
-                    <div class="font-semibold tracking-widest text-xs mb-3 text-white/70">NAWIGACJA</div>
-                    <div class="space-y-2 text-white/70">
-                        <a href="#" class="block hover:text-white">Karta Walk</a>
-                        <a href="#" class="block hover:text-white">Bilety</a>
-                        <a href="#" class="block hover:text-white">Zawodnicy</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="font-semibold tracking-widest text-xs mb-3 text-white/70">KONTAKT</div>
-                    <div class="space-y-2 text-white/70">
-                        <a href="mailto:info@f4l.pl" class="block hover:text-white">info@f4l.pl</a>
-                        <div>+48 32 123 45 67</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="font-semibold tracking-widest text-xs mb-3 text-white/70">SOCIAL</div>
-                    <div class="flex gap-x-4 text-xl">
-                        <a href="#" class="hover:text-[#e30613]">𝕏</a>
-                        <a href="#" class="hover:text-[#e30613]">IG</a>
-                        <a href="#" class="hover:text-[#e30613]">FB</a>
+                <div class="bg-f4l-card border border-neutral-800 rounded-xl overflow-hidden shadow-2xl relative glow-box">
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-between p-8 md:p-0">
+                        
+                        <div class="w-full md:w-2/5 relative flex flex-col items-center justify-end h-[400px] md:h-[500px]">
+                            <div class="absolute inset-0 fighter-img-wrapper flex justify-center items-end opacity-80 hover:opacity-100 transition-opacity duration-500">
+                                <img src="https://images.unsplash.com/photo-1583468982228-19f19120a472?q=80&w=600&auto=format&fit=crop" alt="Jan Kowalczyk" class="h-full object-cover grayscale contrast-125 object-top mix-blend-lighten">
+                            </div>
+                            <div class="relative z-20 text-center pb-8">
+                                <p class="text-f4l-red font-bebas text-3xl tracking-widest mb-1">"KOWBOJ"</p>
+                                <h3 class="font-bebas text-5xl md:text-7xl leading-none uppercase">JAN KOWALCZYK</h3>
+                                <p class="text-f4l-gray font-bold mt-2 font-montserrat">18-3-0</p>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-1/5 flex flex-col items-center justify-center py-10 md:py-0 z-20">
+                            <h4 class="font-bebas text-7xl md:text-9xl text-f4l-red glow-text">VS</h4>
+                            <p class="font-montserrat font-semibold text-neutral-400 text-sm md:text-base tracking-widest uppercase mt-4 text-center">
+                                Heavyweight<br>
+                                <span class="text-f4l-gray text-xs">5 RUND • O PAS MISTRZOWSKI</span>
+                            </p>
+                        </div>
+
+                        <div class="w-full md:w-2/5 relative flex flex-col items-center justify-end h-[400px] md:h-[500px]">
+                            <div class="absolute inset-0 fighter-img-wrapper flex justify-center items-end opacity-80 hover:opacity-100 transition-opacity duration-500">
+                                <img src="https://images.unsplash.com/photo-1549719386-74dfc47db5fc?q=80&w=600&auto=format&fit=crop" alt="Tomasz Nowak" class="h-full object-cover grayscale contrast-125 object-top mix-blend-lighten scale-x-[-1]">
+                            </div>
+                            <div class="relative z-20 text-center pb-8">
+                                <p class="text-f4l-red font-bebas text-3xl tracking-widest mb-1">"GÓRNIK"</p>
+                                <h3 class="font-bebas text-5xl md:text-7xl leading-none uppercase">TOMASZ NOWAK</h3>
+                                <p class="text-f4l-gray font-bold mt-2 font-montserrat">22-4-0</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
+
+            <div class="mb-12 reveal relative max-w-5xl mx-auto">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-30">
+                    <span class="bg-neutral-800 text-white font-bebas px-4 py-1.5 text-xl tracking-widest rounded-sm border border-neutral-600">CO-MAIN EVENT</span>
+                </div>
+
+                <div class="bg-f4l-card border border-neutral-800 rounded-lg overflow-hidden relative">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        
+                        <div class="w-full md:w-5/12 text-center py-10 md:py-16 relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-neutral-900 to-transparent opacity-50"></div>
+                            <div class="relative z-10">
+                                <p class="text-f4l-red font-bebas text-xl tracking-widest">"THE BEAST"</p>
+                                <h3 class="font-bebas text-4xl md:text-5xl uppercase">MIKE ZIELIŃSKI</h3>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-2/12 flex flex-col items-center py-4 z-20">
+                            <h4 class="font-bebas text-5xl text-neutral-500">VS</h4>
+                            <p class="font-montserrat font-semibold text-neutral-400 text-xs tracking-widest uppercase mt-2 text-center">
+                                Welterweight<br>3 Rundy
+                            </p>
+                        </div>
+
+                        <div class="w-full md:w-5/12 text-center py-10 md:py-16 relative">
+                            <div class="absolute inset-0 bg-gradient-to-l from-neutral-900 to-transparent opacity-50"></div>
+                            <div class="relative z-10">
+                                <p class="text-f4l-red font-bebas text-xl tracking-widest">"NINJA"</p>
+                                <h3 class="font-bebas text-4xl md:text-5xl uppercase">PAWEŁ KAMIŃSKI</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-20 reveal">
+                <a href="#" class="btn-premium inline-block px-16 py-5 font-bebas text-3xl tracking-widest rounded shadow-2xl uppercase">
+                    KUP BILETY NA GALĘ
+                </a>
+                <p class="mt-4 text-f4l-gray text-sm font-semibold uppercase tracking-widest">Liczba miejsc ograniczona</p>
+            </div>
+
         </div>
-        
-        <div class="mt-16 pt-8 border-t border-white/10 text-center text-xs text-white/50">
-            © 2026 F4L — Fight For Legacy. Wszelkie prawa zastrzeżone. 
-            <span class="hidden md:inline">•</span> 
-            <span class="block md:inline mt-1 md:mt-0">Zaprojektowano z pasją do walki.</span>
-        </div>
+    </main>
+
+    <footer class="bg-black py-10 text-center border-t border-neutral-900">
+        <h2 class="font-bebas text-4xl text-neutral-600 tracking-widest mb-2">F4L <span class="text-f4l-red text-2xl px-2">•</span> FIGHT FOR LEGACY</h2>
+        <p class="text-neutral-500 text-xs font-montserrat tracking-widest uppercase">© 2026 Wszelkie prawa zastrzeżone.</p>
     </footer>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind config
-        function initTailwind() {
-            document.documentElement.style.setProperty('--accent', '#e30613');
-            
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        fontFamily: {
-                            'anton': ['Anton', 'sans-serif'],
-                            'oswald': ['Oswald', 'sans-serif']
-                        }
-                    }
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
                 }
-            };
-        }
-        
-        // Countdown Timer
-        function startCountdown() {
-            const targetDate = new Date('2026-05-15T20:00:00').getTime();
-            
-            const interval = setInterval(() => {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-                
-                if (distance < 0) {
-                    clearInterval(interval);
-                    document.getElementById('days').innerHTML = '00';
-                    document.getElementById('hours').innerHTML = '00';
-                    document.getElementById('minutes').innerHTML = '00';
-                    return;
-                }
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                
-                document.getElementById('days').innerHTML = String(days).padStart(2, '0');
-                document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
-                document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
-            }, 1000);
-        }
-        
-        // Scroll reveal animations
-        function initScrollReveal() {
-            const reveals = document.querySelectorAll('.fight-card, .section-header');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.15,
-                rootMargin: '0px 0px -80px 0px'
-            });
-            
-            reveals.forEach(el => {
-                el.classList.add('reveal');
-                observer.observe(el);
-            });
-        }
-        
-        // Ticket purchase simulation
-        function buyTicket(type) {
-            const modal = document.createElement('div');
-            modal.innerHTML = `
-                <div class="fixed inset-0 bg-black/90 flex items-center justify-center z-[100]" onclick="this.remove()">
-                    <div onclick="event.stopImmediatePropagation()" class="bg-[#111] max-w-md w-full mx-4 rounded-3xl p-9 border border-[#e30613]/30">
-                        <div class="text-center">
-                            <div class="mx-auto w-16 h-16 bg-[#e30613] rounded-2xl flex items-center justify-center mb-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5z" />
-                                </svg>
-                            </div>
-                            
-                            <h4 class="font-oswald text-3xl tracking-tight">Dziękujemy!</h4>
-                            <p class="mt-3 text-white/70">Twój bilet <span class="font-semibold text-white">${type}</span> został zarezerwowany.</p>
-                            
-                            <div class="mt-8 text-xs text-white/50">Potwierdzenie wysłaliśmy na Twój adres e-mail.<br>Do zobaczenia 15 maja w Gliwicach!</div>
-                            
-                            <button onclick="this.closest('.fixed').remove()" 
-                                    class="mt-8 w-full py-4 text-sm font-semibold tracking-widest border border-white/30 hover:bg-white hover:text-black transition-colors rounded-2xl">
-                                ZAMKNIJ
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-        
-        // Keyboard shortcut hint (for fun)
-        function initKeyboardHint() {
-            document.addEventListener('keydown', function(e) {
-                if (e.key === '?' && document.activeElement.tagName === 'BODY') {
-                    e.preventDefault();
-                    const karta = document.getElementById('karta-walk');
-                    karta.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        }
-        
-        // Main initialization
-        function init() {
-            initTailwind();
-            startCountdown();
-            initScrollReveal();
-            initKeyboardHint();
-            
-            // Subtle parallax on hero (optional premium touch)
-            const hero = document.querySelector('header');
-            if (hero) {
-                window.addEventListener('scroll', () => {
-                    const scrolled = window.scrollY;
-                    hero.style.backgroundPositionY = `${scrolled * 0.3}px`;
-                });
             }
-            
-            // Easter egg: click logo → confetti
-            const logo = document.querySelector('nav svg');
-            if (logo) {
-                logo.addEventListener('click', () => {
-                    const colors = ['#e30613', '#ffffff'];
-                    for (let i = 0; i < 28; i++) {
-                        setTimeout(() => {
-                            const particle = document.createElement('div');
-                            particle.className = 'fixed w-1.5 h-1.5 rounded-full pointer-events-none';
-                            particle.style.left = Math.random() * window.innerWidth + 'px';
-                            particle.style.top = '-10px';
-                            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                            particle.style.zIndex = '9999';
-                            document.body.appendChild(particle);
-                            
-                            const duration = Math.random() * 1800 + 2200;
-                            particle.animate([
-                                { transform: 'translateY(0)', opacity: 1 },
-                                { transform: `translateY(${window.innerHeight + 100}px)`, opacity: 0 }
-                            ], {
-                                duration: duration,
-                                easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
-                            }).onfinish = () => particle.remove();
-                        }, i * 8);
-                    }
-                });
-            }
-            
-            console.log('%c[F4L] Premium site initialized. Ready for GitHub Pages.', 'color:#e30613');
         }
-        
-        window.onload = init;
+        window.addEventListener("scroll", reveal);
+        reveal(); // wywołanie na start
     </script>
 </body>
 </html>
