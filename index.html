@@ -1,195 +1,130 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F4L - Karta Walk</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F4L - Fight For Legacy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Impact&display=swap');
     
-    <style>
-        :root {
-            --primary-red: #e60000; /* Czerwień dopasowana do logo */
-            --bg-color: #050505;
-            --card-bg: #111111;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: #ffffff;
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            padding-bottom: 50px;
-        }
-
-        /* Sekcja z logo */
-        header {
-            padding: 40px 20px 20px;
-        }
-
-        .logo {
-            max-width: 300px;
-            width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-            /* Delikatny cień pod logo, żeby lepiej siedziało na tle */
-            filter: drop-shadow(0 0 20px rgba(230, 0, 0, 0.2));
-        }
-
-        h1.title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3.5rem;
-            letter-spacing: 2px;
-            color: #fff;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        /* Kontener na walki */
-        .fight-card-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Pojedyncza walka */
-        .fight-box {
-            background-color: var(--card-bg);
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 25px 20px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .fight-box:hover {
-            transform: translateY(-5px);
-            border-color: #555;
-        }
-
-        /* Wyróżnienie Walki Wieczoru */
-        .main-event {
-            border: 2px solid var(--primary-red);
-            box-shadow: 0 0 20px rgba(230, 0, 0, 0.3);
-            padding: 35px 20px;
-            margin-bottom: 40px;
-        }
-
-        .main-event:hover {
-            border-color: var(--primary-red);
-            box-shadow: 0 0 30px rgba(230, 0, 0, 0.5);
-        }
-
-        .fight-type {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
-            color: var(--primary-red);
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        /* Układ zawodników */
-        .fighters {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .fighter-name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
-            width: 40%;
-        }
-
-        .vs {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--primary-red);
-            width: 10%;
-        }
-
-        .weight-class {
-            margin-top: 15px;
-            font-size: 1rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* RWD - responsywność na telefony */
-        @media (max-width: 600px) {
-            .fighters {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .fighter-name {
-                width: 100%;
-                font-size: 2.2rem;
-            }
-            .vs {
-                width: 100%;
-                margin: 5px 0;
-            }
-        }
-    </style>
+    body {
+      font-family: 'Anton', sans-serif;
+    }
+    
+    .hero-bg {
+      background-image: url('f4l-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    
+    .neon-red {
+      text-shadow: 
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 40px #ff0000;
+    }
+    
+    .fight-box {
+      background: linear-gradient(145deg, #18181b, #27272a);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-black text-white">
 
-    <header>
-        <img src="f4l-hero.jpg" alt="F4L Logo" class="logo">
-        <h1 class="title">Oficjalna Karta Walk</h1>
-    </header>
+  <!-- HERO z Twoim logo w tle -->
+  <section class="hero-bg min-h-screen flex items-center justify-center relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
+    
+    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <h1 class="text-[160px] md:text-[220px] font-black tracking-[-8px] leading-none neon-red text-red-600">
+        F4L
+      </h1>
+      <p class="text-5xl md:text-7xl font-black tracking-widest mt-2 text-white">FIGHT FOR LEGACY</p>
+      
+      <div class="mt-12 flex justify-center gap-8 text-xl md:text-2xl font-medium">
+        <div>15 MAJA 2026</div>
+        <div class="text-red-500">•</div>
+        <div>ARENA GLIWICE</div>
+      </div>
+    </div>
+  </section>
 
-    <main class="fight-card-container">
+  <!-- KARTA WALK -->
+  <section class="py-20 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-7xl font-black text-center tracking-widest text-red-600 mb-16">KARTA WALK</h2>
+
+      <!-- MAIN EVENT -->
+      <div class="fight-box rounded-3xl p-10 mb-12">
+        <div class="flex justify-center mb-8">
+          <div class="bg-red-600 text-white text-sm font-black tracking-widest px-10 py-3 rounded-full">
+            MAIN EVENT
+          </div>
+        </div>
         
-        <div class="fight-box main-event">
-            <div class="fight-type">WALKA WIECZORU (MAIN EVENT)</div>
-            <div class="fighters">
-                <div class="fighter-name">Jan "Kowal" Kowalski</div>
-                <div class="vs">VS</div>
-                <div class="fighter-name">Adam "Góra" Nowak</div>
-            </div>
-            <div class="weight-class">Kategoria Ciężka - 120 kg | O pas mistrzowski</div>
-        </div>
+        <div class="grid md:grid-cols-3 items-center gap-8">
+          <!-- Fighter 1 -->
+          <div class="text-center md:text-right">
+            <div class="text-4xl md:text-5xl font-black leading-none">JAN "KOWBOJ"</div>
+            <div class="text-4xl md:text-5xl font-black leading-none text-white">KOWALCZYK</div>
+            <div class="text-zinc-400 mt-3 text-xl">18-3 • Heavyweight</div>
+          </div>
 
-        <div class="fight-box">
-            <div class="fight-type">CO-MAIN EVENT</div>
-            <div class="fighters">
-                <div class="fighter-name">Tomasz Wójcik</div>
-                <div class="vs">VS</div>
-                <div class="fighter-name">Piotr Wiśniewski</div>
-            </div>
-            <div class="weight-class">Kategoria Średnia - 84 kg</div>
-        </div>
+          <!-- VS -->
+          <div class="flex flex-col items-center">
+            <div class="text-8xl font-black text-red-600 tracking-widest neon-red">VS</div>
+          </div>
 
-        <div class="fight-box">
-            <div class="fight-type">KARTA GŁÓWNA</div>
-            <div class="fighters">
-                <div class="fighter-name">Michał Kaczmarek</div>
-                <div class="vs">VS</div>
-                <div class="fighter-name">Kamil Lewandowski</div>
-            </div>
-            <div class="weight-class">Kategoria Półśrednia - 77 kg</div>
+          <!-- Fighter 2 -->
+          <div class="text-center md:text-left">
+            <div class="text-4xl md:text-5xl font-black leading-none">TOMASZ "GÓRNIK"</div>
+            <div class="text-4xl md:text-5xl font-black leading-none text-white">NOWAK</div>
+            <div class="text-zinc-400 mt-3 text-xl">22-4 • Heavyweight</div>
+          </div>
         </div>
+      </div>
 
-        <div class="fight-box">
-            <div class="fight-type">KARTA WSTĘPNA</div>
-            <div class="fighters">
-                <div class="fighter-name">Krzysztof Zając</div>
-                <div class="vs">VS</div>
-                <div class="fighter-name">Maciej Szymański</div>
-            </div>
-            <div class="weight-class">Kategoria Lekka - 70 kg</div>
+      <!-- CO-MAIN EVENT -->
+      <div class="fight-box rounded-3xl p-10">
+        <div class="flex justify-center mb-8">
+          <div class="bg-red-600/80 text-white text-sm font-black tracking-widest px-10 py-3 rounded-full">
+            CO-MAIN EVENT
+          </div>
         </div>
+        
+        <div class="grid md:grid-cols-3 items-center gap-8">
+          <!-- Fighter 1 -->
+          <div class="text-center md:text-right">
+            <div class="text-4xl md:text-5xl font-black leading-none">MIKE "THE BEAST"</div>
+            <div class="text-4xl md:text-5xl font-black leading-none text-white">ZIELIŃSKI</div>
+            <div class="text-zinc-400 mt-3 text-xl">Welterweight • 3 rundy</div>
+          </div>
 
-    </main>
+          <!-- VS -->
+          <div class="flex flex-col items-center">
+            <div class="text-8xl font-black text-red-600 tracking-widest neon-red">VS</div>
+          </div>
+
+          <!-- Fighter 2 -->
+          <div class="text-center md:text-left">
+            <div class="text-4xl md:text-5xl font-black leading-none">PAWEŁ "NINJA"</div>
+            <div class="text-4xl md:text-5xl font-black leading-none text-white">KAMIŃSKI</div>
+            <div class="text-zinc-400 mt-3 text-xl">Welterweight • 3 rundy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STOPKA -->
+  <footer class="bg-black py-12 text-center border-t border-zinc-800">
+    <p class="text-3xl font-black tracking-widest text-red-600">F4L • FIGHT FOR LEGACY</p>
+    <p class="text-zinc-500 mt-3">© 2026 • Wszystkie prawa zastrzeżone</p>
+  </footer>
 
 </body>
 </html>
