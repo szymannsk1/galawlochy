@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F4L - Fight For Legacy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Impact', sans-serif; }
+    .hero-bg {
+      background-image: url('f4l-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .neon-text {
+      text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <!-- HERO -->
+  <section class="hero-bg h-screen flex items-center justify-center relative">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative text-center z-10 px-4">
+      <h1 class="text-8xl md:text-[180px] font-black tracking-tighter neon-text leading-none">
+        F<span class="text-red-600">4</span>L
+      </h1>
+      <p class="text-4xl md:text-6xl font-bold mt-4">FIGHT FOR LEGACY</p>
+      <div class="mt-8 text-2xl font-medium">
+        15 MAJA 2026 • ARENA GLIWICE
+      </div>
+      <a href="#karta" 
+         class="mt-12 inline-block bg-red-600 hover:bg-red-700 text-white text-2xl font-bold px-16 py-6 rounded-xl transition">
+        ZOBACZ KARTĘ WALK →
+      </a>
+    </div>
+  </section>
+
+  <!-- KARTA WALK -->
+  <section id="karta" class="py-20 bg-zinc-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16 text-red-600">KARTA WALK</h2>
+      
+      <!-- Main Event -->
+      <div class="mb-12">
+        <div class="text-center mb-6">
+          <span class="bg-red-600 text-white text-sm px-6 py-2 rounded-full font-bold">MAIN EVENT</span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 items-center bg-zinc-800 p-8 rounded-3xl">
+          <div class="text-center">
+            <div class="text-3xl font-bold">JAN "KOWBOJ" KOWALCZYK</div>
+            <div class="text-zinc-400">18-3 • Heavyweight</div>
+          </div>
+          <div class="text-center text-6xl font-black text-red-600">VS</div>
+          <div class="text-center">
+            <div class="text-3xl font-bold">TOMASZ "GÓRNIK" NOWAK</div>
+            <div class="text-zinc-400">22-4 • Heavyweight</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Co-Main + reszta walk -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-zinc-800 p-8 rounded-3xl">
+          <div class="text-red-500 font-bold mb-4">CO-MAIN EVENT</div>
+          <div class="flex justify-between text-2xl font-semibold">
+            <div>MIKE "THE BEAST" ZIELIŃSKI</div>
+            <div class="text-red-600">VS</div>
+            <div>PAWEŁ "NINJA" KAMIŃSKI</div>
+          </div>
+          <div class="text-zinc-400 text-sm mt-2">Welterweight • 3 rundy</div>
+        </div>
+
+        <div class="bg-zinc-800 p-8 rounded-3xl">
+          <div class="text-red-500 font-bold mb-4">KARTA WALKI</div>
+          <ul class="space-y-6 text-lg">
+            <li class="flex justify-between"><span>ADAM "WILK" WÓJCIK</span> <span class="text-red-600">VS</span> <span>KACPER "KILLER" LEWANDOWSKI</span></li>
+            <li class="flex justify-between"><span>OLIWIA "BOMBKA" NOWAK</span> <span class="text-red-600">VS</span> <span>NATALIA "STRIKER" KOWALSKA</span></li>
+            <li class="flex justify-between"><span>BARTOSZ "TANK" ZIEMIAŃSKI</span> <span class="text-red-600">VS</span> <span>MARCIN "HAMMER" DUDEK</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STOPKA -->
+  <footer class="bg-black py-12 text-center">
+    <p class="text-2xl font-bold">F4L • Fight For Legacy</p>
+    <p class="text-zinc-500 mt-2">© 2026 • Wszystkie prawa zastrzeżone</p>
+    <p class="text-zinc-600 mt-8">Strona zrobiona na GitHub Pages</p>
+  </footer>
+
+  <script>
+    // Prosty Tailwind config
+    tailwind.config = {
+      content: [],
+      theme: { extend: {} }
+    }
+  </script>
+</body>
+</html>
