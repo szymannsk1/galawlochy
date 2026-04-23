@@ -3,577 +3,711 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F4L • Fight For Legacy | 15 Maja 2026 • Arena Gliwice</title>
+    <title>F4L • Fight For Legacy | Oficjalna strona gal MMA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Oswald:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap');
         
-        :root {
-            --f4l-red: #e30613;
-        }
-        
-        body {
-            font-family: 'Inter', system_ui, sans-serif;
-        }
-        
+        body { font-family: 'Inter', system_ui, sans-serif; }
         .font-anton { font-family: 'Anton', sans-serif; }
         .font-oswald { font-family: 'Oswald', sans-serif; }
         
         .neon-red {
-            text-shadow: 
-                0 0 10px #e30613,
-                0 0 20px #e30613,
-                0 0 40px #e30613;
+            text-shadow: 0 0 10px #e30613, 0 0 20px #e30613, 0 0 40px #e30613;
         }
         
         .premium-shadow {
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4),
-                        0 10px 10px -6px rgb(0 0 0 / 0.4);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4), 0 10px 10px -6px rgb(0 0 0 / 0.4);
         }
         
         .fighter-img {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5),
-                        0 4px 6px -4px rgb(0 0 0 / 0.5);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
         }
-        
-        .fighter-img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 25px -5px rgb(227 6 19 / 0.15),
-                        0 8px 10px -6px rgb(227 6 19 / 0.15);
-        }
+        .fighter-img:hover { transform: scale(1.03); box-shadow: 0 20px 25px -5px rgb(227 6 19 / 0.15), 0 8px 10px -6px rgb(227 6 19 / 0.15); }
         
         .vs-glow {
             animation: vs-pulse 2s ease-in-out infinite;
-            text-shadow: 
-                0 0 15px #e30613,
-                0 0 30px #e30613,
-                0 0 50px #e30613;
+            text-shadow: 0 0 15px #e30613, 0 0 30px #e30613, 0 0 50px #e30613;
         }
-        
-        @keyframes vs-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.92; }
-        }
+        @keyframes vs-pulse { 0%,100%{opacity:1} 50%{opacity:0.92} }
         
         .section-header {
-            font-size: clamp(3.5rem, 8vw, 6.5rem);
-            line-height: 0.9;
+            font-size: clamp(3.2rem, 7vw, 5.8rem);
+            line-height: 0.88;
             letter-spacing: -0.04em;
         }
         
-        .fight-card {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .fight-card:hover {
-            transform: translateY(-4px);
-        }
-        
-        .nav-active {
-            color: #e30613;
-            position: relative;
-        }
-        
-        .nav-active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right, #e30613, transparent);
-        }
+        .nav-active { color: #e30613; position: relative; }
+        .nav-active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px; background: linear-gradient(to right, #e30613, transparent); }
         
         .cinematic-bg {
-            background: linear-gradient(rgba(10, 10, 10, 0.82), rgba(10, 10, 10, 0.88)),
-                        url('https://picsum.photos/id/1018/2000/1200') center/cover no-repeat;
+            background: linear-gradient(rgba(10,10,10,0.82), rgba(10,10,10,0.88)), url('https://picsum.photos/id/1018/2000/1200') center/cover no-repeat;
         }
         
-        .premium-text {
-            font-weight: 700;
-            letter-spacing: -0.025em;
-        }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4,0,0.2,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .stat-pill {
-            background: rgba(17, 17, 17, 0.6);
-            backdrop-filter: blur(12px);
-        }
-        
-        .social-card {
+        .event-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .social-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(227 6 19 / 0.1);
+        .event-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px -12px rgb(227 6 19 / 0.15);
         }
         
-        .social-icon {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+        @keyframes modalPop { from { opacity:0; transform: scale(0.88) translateY(30px); } to { opacity:1; transform: scale(1) translateY(0); } }
         
-        .social-card:hover .social-icon {
-            transform: scale(1.1) rotate(2deg);
+        .social-card { transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .social-card:hover { transform: translateY(-8px); }
+        .social-icon { transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .social-card:hover .social-icon { transform: scale(1.1) rotate(2deg); }
+        
+        .tab-active {
+            background: #e30613;
+            color: white;
+            box-shadow: 0 0 15px rgb(227 6 19 / 0.4);
         }
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+    
     <!-- NAVBAR -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-lg border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo -->
             <div class="flex items-center gap-x-3">
-                <div class="flex items-center">
-                    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8L26 26L44 8" stroke="#e30613" stroke-width="6" stroke-linejoin="round"/>
-                        <path d="M8 44L26 26L44 44" stroke="#e30613" stroke-width="6" stroke-linejoin="round"/>
-                        <circle cx="26" cy="26" r="9" fill="#e30613"/>
-                    </svg>
-                </div>
-                <div>
-                    <span class="font-anton text-4xl tracking-tighter text-white">F4L</span>
-                </div>
+                <svg width="48" height="48" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 8L26 26L44 8" stroke="#e30613" stroke-width="6" stroke-linejoin="round"/>
+                    <path d="M8 44L26 26L44 44" stroke="#e30613" stroke-width="6" stroke-linejoin="round"/>
+                    <circle cx="26" cy="26" r="9" fill="#e30613"/>
+                </svg>
+                <span class="font-anton text-4xl tracking-tighter">F4L</span>
             </div>
             
-            <!-- Menu -->
-            <div class="hidden md:flex items-center gap-x-10 text-sm font-medium tracking-widest">
-                <a href="#karta-walk" class="hover:text-[#e30613] transition-colors">KARTA WALK</a>
-                <a href="#social" class="hover:text-[#e30613] transition-colors">SOCIAL</a>
-                <a href="#" class="hover:text-[#e30613] transition-colors">O GALI</a>
+            <div class="hidden md:flex items-center gap-x-9 text-sm font-medium tracking-widest">
+                <a href="#home" class="hover:text-[#e30613] transition-colors">HOME</a>
+                <a href="#gale" class="hover:text-[#e30613] transition-colors">GALE</a>
+                <a href="#onas" class="hover:text-[#e30613] transition-colors">O NAS</a>
             </div>
             
-            <!-- Right side - subtle live indicator -->
-            <div class="hidden md:flex items-center gap-x-2 text-xs">
-                <div class="flex items-center gap-x-1.5 px-3 py-1.5 bg-white/5 rounded-full border border-white/10">
+            <div class="flex items-center gap-x-4">
+                <div class="hidden md:flex items-center gap-x-1.5 px-3 py-1.5 bg-white/5 rounded-full border border-white/10 text-xs">
                     <div class="w-2 h-2 bg-[#e30613] rounded-full animate-pulse"></div>
-                    <span class="tracking-widest text-white/70">LIVE UPDATES</span>
+                    <span class="tracking-widest text-white/70">LIVE</span>
+                </div>
+                
+                <!-- Mini social icons -->
+                <div class="flex items-center gap-x-2 text-xl">
+                    <a href="#" class="hover:text-[#e30613] transition-colors">𝕏</a>
+                    <a href="#" class="hover:text-[#e30613] transition-colors">IG</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="relative h-screen flex items-center justify-center cinematic-bg pt-20">
+    <!-- HERO / HOME -->
+    <section id="home" class="relative h-[100dvh] flex items-center justify-center cinematic-bg pt-20">
         <div class="absolute inset-0 bg-[radial-gradient(#e30613_0.8px,transparent_1px)] bg-[length:4px_4px] opacity-10"></div>
         
         <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <!-- Logo + Title -->
-            <div class="mb-8">
-                <div class="inline-flex items-center justify-center mb-4">
-                    <div class="px-6 py-1.5 border border-[#e30613]/60 rounded-full text-xs tracking-[3px] font-medium text-[#e30613]">OFICJALNA STRONA GALI</div>
-                </div>
-                
-                <h1 class="font-anton text-[120px] md:text-[160px] leading-[0.82] tracking-tighter mb-2">
-                    <span class="text-[#e30613] neon-red">F4L</span>
-                </h1>
-                <div class="font-oswald text-7xl md:text-[92px] tracking-[-3.5px] leading-none mb-6">
-                    FIGHT FOR LEGACY
-                </div>
+            <div class="mb-6">
+                <div class="inline-flex items-center px-5 py-1.5 border border-[#e30613]/60 rounded-full text-xs tracking-[3px] mb-4">EST. 2025 • POLSKA</div>
             </div>
             
-            <!-- Date & Venue -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-x-4 gap-y-2 text-xl md:text-2xl tracking-[1.5px] font-light">
-                <div class="flex items-center gap-x-3">
-                    <span class="text-[#e30613]">15 MAJA 2026</span>
-                    <span class="text-white/40">•</span>
-                    <span>ARENA GLIWICE</span>
-                </div>
+            <h1 class="font-anton text-[110px] md:text-[150px] leading-[0.82] tracking-tighter mb-3">
+                <span class="text-[#e30613] neon-red">F4L</span>
+            </h1>
+            <div class="font-oswald text-6xl md:text-[82px] tracking-[-3px] leading-none mb-8">FIGHT FOR LEGACY</div>
+            
+            <div class="max-w-md mx-auto">
+                <p class="text-xl text-white/80">Największa i najbardziej prestiżowa seria gal MMA w Polsce. Tu rodzą się legendy.</p>
             </div>
             
-            <!-- Countdown -->
-            <div class="mt-10 flex justify-center">
-                <div class="stat-pill px-8 py-4 rounded-2xl border border-white/10 flex items-center gap-x-8 text-center">
-                    <div>
-                        <div id="days" class="font-oswald text-4xl font-semibold tabular-nums">22</div>
-                        <div class="text-[10px] tracking-widest text-white/60">DNI</div>
-                    </div>
-                    <div class="w-px h-8 bg-white/20"></div>
-                    <div>
-                        <div id="hours" class="font-oswald text-4xl font-semibold tabular-nums">11</div>
-                        <div class="text-[10px] tracking-widest text-white/60">GODZIN</div>
-                    </div>
-                    <div class="w-px h-8 bg-white/20"></div>
-                    <div>
-                        <div id="minutes" class="font-oswald text-4xl font-semibold tabular-nums">09</div>
-                        <div class="text-[10px] tracking-widest text-white/60">MINUT</div>
-                    </div>
-                </div>
+            <div class="mt-10 flex justify-center gap-x-4">
+                <button onclick="document.getElementById('gale').scrollIntoView({behavior:'smooth'})" 
+                        class="px-10 py-4 bg-white text-black font-semibold text-sm tracking-widest rounded-full hover:bg-[#e30613] hover:text-white transition-all">
+                    ZOBACZ GALE
+                </button>
+                <button onclick="document.getElementById('gale').scrollIntoView({behavior:'smooth'})" 
+                        class="px-8 py-4 border border-white/40 hover:bg-white/5 text-sm tracking-widest rounded-full transition-all">
+                    KOLEJNA GALA
+                </button>
             </div>
         </div>
         
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <div class="text-xs tracking-[2px] text-white/50 mb-1.5">PRZEWIŃ</div>
-            <div class="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"></div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <div class="text-xs tracking-[3px] text-white/50 mb-2">PRZEWIŃ ABY ODKRYĆ</div>
+            <div class="w-px h-9 bg-gradient-to-b from-white/40 to-transparent"></div>
         </div>
-    </header>
-
-    <!-- KARTA WALK SECTION -->
-    <section id="karta-walk" class="max-w-7xl mx-auto px-6 pt-20 pb-24">
-        <div class="text-center mb-16">
-            <div class="inline-block px-5 py-1.5 bg-[#e30613] text-xs tracking-[2.5px] font-semibold mb-4 rounded-full">OFICJALNA KARTA WALK</div>
-            <h2 class="font-anton section-header tracking-tighter text-white">KARTA WALK</h2>
-            <p class="max-w-md mx-auto mt-4 text-lg text-white/70">15 Maja 2026 • Arena Gliwice • 20:00</p>
-        </div>
-
-        <!-- MAIN EVENT -->
-        <div class="mb-12">
-            <div class="flex items-center gap-x-4 mb-6 px-1">
-                <div class="px-5 py-1.5 bg-[#e30613] text-sm font-bold tracking-widest rounded-full flex items-center gap-x-2">
-                    <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                    MAIN EVENT
-                </div>
-                <div class="flex-1 h-px bg-gradient-to-r from-[#e30613]/60 to-transparent"></div>
-            </div>
-            
-            <div class="fight-card bg-[#111111] border border-[#e30613]/20 rounded-3xl overflow-hidden premium-shadow">
-                <div class="grid md:grid-cols-5 items-center">
-                    <!-- Left Fighter -->
-                    <div class="md:col-span-2 p-8 md:p-10">
-                        <div class="relative group">
-                            <img src="https://picsum.photos/id/1005/700/900" 
-                                 class="fighter-img w-full aspect-[4/5] object-cover rounded-2xl border border-[#e30613]/30"
-                                 alt="Jan 'Kowboj' Kowalczyk - Heavyweight MMA Fighter">
-                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent rounded-b-2xl"></div>
-                            <div class="absolute bottom-5 left-5">
-                                <div class="text-sm text-white/70">18-3 • HEAVYWEIGHT</div>
-                            </div>
-                        </div>
-                        <div class="mt-6">
-                            <div class="font-oswald text-4xl md:text-[42px] leading-none tracking-tighter">JAN<br>"KOWBOJ"<br>KOWALCZYK</div>
-                            <div class="mt-1 text-[#e30613] text-sm tracking-[1px]">POLSKA</div>
-                        </div>
-                    </div>
-                    
-                    <!-- VS -->
-                    <div class="md:col-span-1 flex justify-center items-center py-8 md:py-0">
-                        <div class="text-center">
-                            <div class="font-anton text-[92px] md:text-[120px] leading-none text-[#e30613] vs-glow tracking-[-6px]">VS</div>
-                            <div class="text-xs text-white/50 tracking-[3px] -mt-3">HEAVYWEIGHT</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Fighter -->
-                    <div class="md:col-span-2 p-8 md:p-10 md:text-right">
-                        <div class="relative group md:ml-auto md:w-full">
-                            <img src="https://picsum.photos/id/1011/700/900" 
-                                 class="fighter-img w-full aspect-[4/5] object-cover rounded-2xl border border-[#e30613]/30"
-                                 alt="Tomasz 'Górnik' Nowak - Heavyweight MMA Fighter">
-                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent rounded-b-2xl"></div>
-                            <div class="absolute bottom-5 right-5 md:text-right">
-                                <div class="text-sm text-white/70">22-4 • HEAVYWEIGHT</div>
-                            </div>
-                        </div>
-                        <div class="mt-6 md:text-right">
-                            <div class="font-oswald text-4xl md:text-[42px] leading-none tracking-tighter">TOMASZ<br>"GÓRNIK"<br>NOWAK</div>
-                            <div class="mt-1 text-[#e30613] text-sm tracking-[1px]">POLSKA</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CO-MAIN EVENT -->
-        <div>
-            <div class="flex items-center gap-x-4 mb-6 px-1">
-                <div class="px-5 py-1.5 bg-white/10 text-sm font-bold tracking-widest rounded-full flex items-center gap-x-2 border border-white/20">
-                    CO-MAIN EVENT
-                </div>
-                <div class="flex-1 h-px bg-gradient-to-r from-white/20 to-transparent"></div>
-            </div>
-            
-            <div class="fight-card bg-[#111111] border border-white/10 rounded-3xl overflow-hidden premium-shadow">
-                <div class="grid md:grid-cols-5 items-center">
-                    <!-- Left Fighter -->
-                    <div class="md:col-span-2 p-7 md:p-9">
-                        <div class="relative group">
-                            <img src="https://picsum.photos/id/102/700/900" 
-                                 class="fighter-img w-full aspect-[4/5] object-cover rounded-2xl border border-white/20"
-                                 alt="Mike 'The Beast' Zieliński - Welterweight MMA Fighter">
-                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent rounded-b-2xl"></div>
-                            <div class="absolute bottom-5 left-5">
-                                <div class="text-xs text-white/60">WELTERWEIGHT • 3 RUNDY</div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <div class="font-oswald text-[32px] leading-none tracking-tighter">MIKE<br>"THE BEAST"<br>ZIELIŃSKI</div>
-                            <div class="mt-0.5 text-[#e30613] text-xs tracking-widest">18-5</div>
-                        </div>
-                    </div>
-                    
-                    <!-- VS -->
-                    <div class="md:col-span-1 flex justify-center items-center py-6 md:py-0">
-                        <div class="text-center">
-                            <div class="font-anton text-[72px] text-[#e30613] vs-glow tracking-[-3px]">VS</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Fighter -->
-                    <div class="md:col-span-2 p-7 md:p-9 md:text-right">
-                        <div class="relative group md:ml-auto md:w-full">
-                            <img src="https://picsum.photos/id/106/700/900" 
-                                 class="fighter-img w-full aspect-[4/5] object-cover rounded-2xl border border-white/20"
-                                 alt="Paweł 'Ninja' Kamiński - Welterweight MMA Fighter">
-                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/90 to-transparent rounded-b-2xl"></div>
-                            <div class="absolute bottom-5 right-5 md:text-right">
-                                <div class="text-xs text-white/60">WELTERWEIGHT • 3 RUNDY</div>
-                            </div>
-                        </div>
-                        <div class="mt-5 md:text-right">
-                            <div class="font-oswald text-[32px] leading-none tracking-tighter">PAWEŁ<br>"NINJA"<br>KAMIŃSKI</div>
-                            <div class="mt-0.5 text-[#e30613] text-xs tracking-widest">21-6</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-8 text-xs text-white/50 tracking-widest">PEŁNA KARTA WALK • 8 WALK • 4 TYTUŁOWE</div>
     </section>
 
-    <!-- SOCIAL MEDIA SECTION -->
-    <section id="social" class="bg-[#111111] py-20 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-14">
-                <div class="inline-block px-5 py-1.5 bg-[#e30613]/10 text-[#e30613] text-xs tracking-[2.5px] font-semibold rounded-full mb-4">250 000+ FOLLOWERS</div>
-                <h2 class="font-anton text-6xl md:text-7xl tracking-tighter">ŚLEDŹ F4L</h2>
-                <p class="max-w-lg mx-auto mt-5 text-xl text-white/70">Bądź częścią legendy. Oglądaj ekskluzywne materiały, highlighty walk i kulisy przygotowań do gali.</p>
+    <!-- NADCHODZĄCA GALA TEASER -->
+    <div class="max-w-7xl mx-auto px-6 -mt-8 relative z-20">
+        <div class="bg-[#111111] border border-[#e30613]/30 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 premium-shadow">
+            <div class="flex-1">
+                <div class="flex items-center gap-x-3 mb-4">
+                    <div class="px-4 py-1 bg-[#e30613] text-xs tracking-[2px] font-bold rounded-full">NASTĘPNA GALA</div>
+                    <div class="text-xs text-white/50">15 MAJA 2026</div>
+                </div>
+                <div class="font-oswald text-5xl tracking-tighter leading-none mb-3">FIGHT FOR LEGACY</div>
+                <div class="text-2xl text-white/80">Arena Gliwice • 20:00</div>
+                
+                <div class="mt-6 flex items-center gap-x-4">
+                    <button onclick="showEventModal('f4l-2026-05')" 
+                            class="px-9 py-3.5 bg-[#e30613] hover:bg-[#c30410] text-sm font-semibold tracking-widest rounded-full transition-all flex items-center gap-x-2">
+                        ZOBACZ PEŁNĄ KARTĘ WALK
+                    </button>
+                    <button onclick="showEventModal('f4l-2026-05')" 
+                            class="px-6 py-3.5 border border-white/30 hover:bg-white/5 text-sm tracking-widest rounded-full transition-all">
+                        KUP BILETY
+                    </button>
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- Instagram -->
-                <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-center gap-x-4">
-                            <div class="social-icon w-14 h-14 bg-gradient-to-br from-[#f56040] via-[#e1306c] to-[#c13584] rounded-2xl flex items-center justify-center flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.849.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.667.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.76 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-2xl">Instagram</div>
-                                <div class="text-[#e30613] text-sm font-medium">@f4l_fightforlegacy</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-auto pt-9">
-                        <div class="flex items-baseline gap-x-1">
-                            <div class="font-oswald text-[42px] tabular-nums tracking-tighter">142</div>
-                            <div class="text-2xl text-white/60">k</div>
-                        </div>
-                        <div class="text-xs text-white/50 -mt-1 tracking-widest">OBSERWUJĄCYCH</div>
-                        
-                        <a href="#" target="_blank" class="mt-7 block w-full py-3.5 text-center border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-sm font-semibold tracking-[1.5px] transition-all active:scale-[0.985]">
-                            OBSERWUJ NA INSTAGRAMIE
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- X (Twitter) -->
-                <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-center gap-x-4">
-                            <div class="social-icon w-14 h-14 bg-black border border-white/30 rounded-2xl flex items-center justify-center flex-shrink-0">
-                                <span class="text-white text-4xl font-black tracking-tighter">𝕏</span>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-2xl">X</div>
-                                <div class="text-[#e30613] text-sm font-medium">@F4L_MMA</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-auto pt-9">
-                        <div class="flex items-baseline gap-x-1">
-                            <div class="font-oswald text-[42px] tabular-nums tracking-tighter">89</div>
-                            <div class="text-2xl text-white/60">k</div>
-                        </div>
-                        <div class="text-xs text-white/50 -mt-1 tracking-widest">OBSERWUJĄCYCH</div>
-                        
-                        <a href="#" target="_blank" class="mt-7 block w-full py-3.5 text-center border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-sm font-semibold tracking-[1.5px] transition-all active:scale-[0.985]">
-                            OBSERWUJ NA X
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Facebook -->
-                <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-center gap-x-4">
-                            <div class="social-icon w-14 h-14 bg-[#1877f2] rounded-2xl flex items-center justify-center flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-2xl">Facebook</div>
-                                <div class="text-[#e30613] text-sm font-medium">Fight For Legacy</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-auto pt-9">
-                        <div class="flex items-baseline gap-x-1">
-                            <div class="font-oswald text-[42px] tabular-nums tracking-tighter">67</div>
-                            <div class="text-2xl text-white/60">k</div>
-                        </div>
-                        <div class="text-xs text-white/50 -mt-1 tracking-widest">POLUBIEŃ</div>
-                        
-                        <a href="#" target="_blank" class="mt-7 block w-full py-3.5 text-center border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-sm font-semibold tracking-[1.5px] transition-all active:scale-[0.985]">
-                            POLUB NA FACEBOOKU
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- YouTube -->
-                <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
-                    <div class="flex items-start justify-between">
-                        <div class="flex items-center gap-x-4">
-                            <div class="social-icon w-14 h-14 bg-[#ff0000] rounded-2xl flex items-center justify-center flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-2xl">YouTube</div>
-                                <div class="text-[#e30613] text-sm font-medium">F4L Official</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-auto pt-9">
-                        <div class="flex items-baseline gap-x-1">
-                            <div class="font-oswald text-[42px] tabular-nums tracking-tighter">214</div>
-                            <div class="text-2xl text-white/60">k</div>
-                        </div>
-                        <div class="text-xs text-white/50 -mt-1 tracking-widest">SUBSKRYPCJI</div>
-                        
-                        <a href="#" target="_blank" class="mt-7 block w-full py-3.5 text-center border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-sm font-semibold tracking-[1.5px] transition-all active:scale-[0.985]">
-                            SUBSKRYBUJ KANAŁ
-                        </a>
-                    </div>
-                </div>
-                
+            <div class="hidden md:block w-px h-24 bg-white/10"></div>
+            
+            <div class="md:w-80">
+                <div class="text-xs text-white/50 tracking-widest mb-2">GŁÓWNA WALKA</div>
+                <div class="font-semibold text-xl leading-tight">JAN „KOWBOJ” KOWALCZYK<br>vs TOMASZ „GÓRNIK” NOWAK</div>
+                <div class="mt-4 text-xs text-[#e30613]">HEAVYWEIGHT • MAIN EVENT</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALE SECTION -->
+    <section id="gale" class="max-w-7xl mx-auto px-6 pt-24 pb-16">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <div class="text-xs tracking-[3px] text-[#e30613] font-semibold mb-1">KALENDARZ GAL</div>
+                <h2 class="font-anton section-header tracking-tighter">GALE F4L</h2>
             </div>
             
-            <div class="text-center mt-12">
-                <div class="inline-flex items-center gap-x-2 text-sm text-white/60">
-                    <span>Oficjalne profile F4L • Aktualizacje na żywo z przygotowań</span>
+            <!-- Tabs -->
+            <div class="flex bg-[#111] rounded-full p-1 border border-white/10">
+                <button onclick="switchTab(this, 'upcoming')" class="tab-btn tab-active px-8 py-2 text-sm font-semibold rounded-full tracking-widest">DOSTĘPNE</button>
+                <button onclick="switchTab(this, 'past')" class="tab-btn px-8 py-2 text-sm font-semibold rounded-full tracking-widest text-white/70 hover:text-white">ARCHIWUM</button>
+            </div>
+        </div>
+        
+        <!-- UPCOMING EVENTS -->
+        <div id="upcoming-tab" class="tab-content grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Current Event Card -->
+            <div onclick="showEventModal('f4l-2026-05')" class="event-card bg-[#111111] border border-[#e30613]/30 rounded-3xl overflow-hidden cursor-pointer group">
+                <div class="h-64 bg-[url('https://picsum.photos/id/1018/800/600')] bg-cover relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent"></div>
+                    <div class="absolute top-5 right-5 px-4 py-1 bg-[#e30613] text-xs font-bold tracking-widest rounded-full">NASTĘPNA</div>
+                    <div class="absolute bottom-5 left-5">
+                        <div class="text-white/70 text-sm">15 MAJA 2026 • 20:00</div>
+                        <div class="font-oswald text-4xl tracking-tighter">FIGHT FOR LEGACY</div>
+                        <div class="text-white/80">Arena Gliwice</div>
+                    </div>
+                </div>
+                <div class="p-6 flex items-center justify-between">
+                    <div>
+                        <div class="text-sm text-white/60">GŁÓWNA WALKA</div>
+                        <div class="font-semibold">Kowboj vs Górnik</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-[#e30613] group-hover:underline">ZOBACZ KARTĘ →</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Another upcoming (fictional) -->
+            <div onclick="showEventModal('f4l-2026-09')" class="event-card bg-[#111111] border border-white/10 rounded-3xl overflow-hidden cursor-pointer group">
+                <div class="h-64 bg-[url('https://picsum.photos/id/1033/800/600')] bg-cover relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent"></div>
+                    <div class="absolute top-5 right-5 px-4 py-1 bg-white/90 text-black text-xs font-bold tracking-widest rounded-full">WRZESIEŃ 2026</div>
+                    <div class="absolute bottom-5 left-5">
+                        <div class="text-white/70 text-sm">12 WRZEŚNIA 2026 • 19:00</div>
+                        <div class="font-oswald text-4xl tracking-tighter">F4L: LEGACY II</div>
+                        <div class="text-white/80">Tauron Arena Kraków</div>
+                    </div>
+                </div>
+                <div class="p-6 flex items-center justify-between">
+                    <div>
+                        <div class="text-sm text-white/60">GŁÓWNA WALKA</div>
+                        <div class="font-semibold">Zieliński vs „The Machine”</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-white/60 group-hover:underline">ZOBACZ SZCZEGÓŁY →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PAST EVENTS -->
+        <div id="past-tab" class="tab-content hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div onclick="showEventModal('f4l-2025-10')" class="event-card bg-[#111111] border border-white/10 rounded-3xl overflow-hidden cursor-pointer group">
+                <div class="h-48 bg-[url('https://picsum.photos/id/106/800/600')] bg-cover relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 to-transparent"></div>
+                    <div class="absolute top-4 left-4 px-3 py-px bg-white/90 text-black text-xs font-bold">12.10.2025</div>
+                    <div class="absolute bottom-4 left-4">
+                        <div class="font-oswald text-2xl tracking-tighter">F4L 01</div>
+                        <div class="text-xs text-white/70">Arena Gliwice</div>
+                    </div>
+                    <div class="absolute top-4 right-4 text-xs px-2 py-0.5 bg-emerald-500/90 text-white rounded">ZAKOŃCZONA</div>
+                </div>
+                <div class="px-5 py-4 text-sm flex justify-between items-center">
+                    <div>„Kowboj” pokonał „Ninja”</div>
+                    <div class="text-[#e30613] text-xs group-hover:underline">RECAP →</div>
+                </div>
+            </div>
+            
+            <div onclick="showEventModal('f4l-2026-02')" class="event-card bg-[#111111] border border-white/10 rounded-3xl overflow-hidden cursor-pointer group">
+                <div class="h-48 bg-[url('https://picsum.photos/id/1027/800/600')] bg-cover relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 to-transparent"></div>
+                    <div class="absolute top-4 left-4 px-3 py-px bg-white/90 text-black text-xs font-bold">22.02.2026</div>
+                    <div class="absolute bottom-4 left-4">
+                        <div class="font-oswald text-2xl tracking-tighter">F4L 02</div>
+                        <div class="text-xs text-white/70">Hala Orbita, Wrocław</div>
+                    </div>
+                    <div class="absolute top-4 right-4 text-xs px-2 py-0.5 bg-emerald-500/90 text-white rounded">ZAKOŃCZONA</div>
+                </div>
+                <div class="px-5 py-4 text-sm flex justify-between items-center">
+                    <div>„Górnik” obronił tytuł</div>
+                    <div class="text-[#e30613] text-xs group-hover:underline">RECAP →</div>
+                </div>
+            </div>
+            
+            <div onclick="showEventModal('f4l-2025-05')" class="event-card bg-[#111111] border border-white/10 rounded-3xl overflow-hidden cursor-pointer group">
+                <div class="h-48 bg-[url('https://picsum.photos/id/160/800/600')] bg-cover relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 to-transparent"></div>
+                    <div class="absolute top-4 left-4 px-3 py-px bg-white/90 text-black text-xs font-bold">17.05.2025</div>
+                    <div class="absolute bottom-4 left-4">
+                        <div class="font-oswald text-2xl tracking-tighter">F4L: DEBUT</div>
+                        <div class="text-xs text-white/70">Spodek, Katowice</div>
+                    </div>
+                    <div class="absolute top-4 right-4 text-xs px-2 py-0.5 bg-emerald-500/90 text-white rounded">ZAKOŃCZONA</div>
+                </div>
+                <div class="px-5 py-4 text-sm flex justify-between items-center">
+                    <div>Pierwsza gala F4L</div>
+                    <div class="text-[#e30613] text-xs group-hover:underline">RECAP →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O NAS -->
+    <section id="onas" class="bg-[#111111] py-20 border-t border-white/10">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="text-xs tracking-[3px] text-[#e30613] mb-3">NASZA FILOZOFIA</div>
+            <h2 class="font-anton text-6xl tracking-tighter mb-8">FIGHT FOR LEGACY</h2>
+            
+            <div class="max-w-2xl mx-auto text-xl text-white/80 leading-relaxed">
+                Tworzymy gale, które wykraczają poza sport. To momenty, w których zwykli ludzie stają się legendami. 
+                Brutalna uczciwość, najwyższa jakość i szacunek do walki – to DNA F4L.
+            </div>
+            
+            <div class="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+                <div>
+                    <div class="text-5xl font-oswald text-[#e30613]">12</div>
+                    <div class="text-xs tracking-widest mt-2">GAL W 2025</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-oswald text-[#e30613]">87</div>
+                    <div class="text-xs tracking-widest mt-2">WALKI</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-oswald text-[#e30613]">250k</div>
+                    <div class="text-xs tracking-widest mt-2">FOLLOWERS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL (keep the nice one) -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <div class="inline-block px-5 py-1.5 bg-[#e30613]/10 text-[#e30613] text-xs tracking-[2.5px] font-semibold rounded-full mb-4">250 000+ FOLLOWERS</div>
+            <h2 class="font-anton text-6xl tracking-tighter">ŚLEDŹ F4L</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Instagram -->
+            <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
+                <div class="flex items-center gap-x-4">
+                    <div class="social-icon w-14 h-14 bg-gradient-to-br from-[#f56040] via-[#e1306c] to-[#c13584] rounded-2xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.849.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.667.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.76 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-xl">Instagram</div>
+                        <div class="text-[#e30613] text-sm">@f4l_fightforlegacy</div>
+                    </div>
+                </div>
+                <div class="mt-auto pt-8">
+                    <div class="font-oswald text-5xl tabular-nums tracking-tighter">142k</div>
+                    <div class="text-xs text-white/50 -mt-1">OBSERWUJĄCYCH</div>
+                    <a href="#" class="mt-6 block text-center py-3 border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-xs tracking-widest transition-all">OBSERWUJ</a>
+                </div>
+            </div>
+            
+            <!-- X -->
+            <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
+                <div class="flex items-center gap-x-4">
+                    <div class="social-icon w-14 h-14 bg-black border border-white/30 rounded-2xl flex items-center justify-center">
+                        <span class="text-white text-4xl font-black">𝕏</span>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-xl">X</div>
+                        <div class="text-[#e30613] text-sm">@F4L_MMA</div>
+                    </div>
+                </div>
+                <div class="mt-auto pt-8">
+                    <div class="font-oswald text-5xl tabular-nums tracking-tighter">89k</div>
+                    <div class="text-xs text-white/50 -mt-1">OBSERWUJĄCYCH</div>
+                    <a href="#" class="mt-6 block text-center py-3 border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-xs tracking-widest transition-all">OBSERWUJ NA X</a>
+                </div>
+            </div>
+            
+            <!-- Facebook -->
+            <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
+                <div class="flex items-center gap-x-4">
+                    <div class="social-icon w-14 h-14 bg-[#1877f2] rounded-2xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-xl">Facebook</div>
+                        <div class="text-[#e30613] text-sm">Fight For Legacy</div>
+                    </div>
+                </div>
+                <div class="mt-auto pt-8">
+                    <div class="font-oswald text-5xl tabular-nums tracking-tighter">67k</div>
+                    <div class="text-xs text-white/50 -mt-1">POLUBIEŃ</div>
+                    <a href="#" class="mt-6 block text-center py-3 border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-xs tracking-widest transition-all">POLUB</a>
+                </div>
+            </div>
+            
+            <!-- YouTube -->
+            <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
+                <div class="flex items-center gap-x-4">
+                    <div class="social-icon w-14 h-14 bg-[#ff0000] rounded-2xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-xl">YouTube</div>
+                        <div class="text-[#e30613] text-sm">F4L Official</div>
+                    </div>
+                </div>
+                <div class="mt-auto pt-8">
+                    <div class="font-oswald text-5xl tabular-nums tracking-tighter">214k</div>
+                    <div class="text-xs text-white/50 -mt-1">SUBSKRYPCJI</div>
+                    <a href="#" class="mt-6 block text-center py-3 border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-xs tracking-widest transition-all">SUBSKRYBUJ</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-black py-14 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-y-10">
-            <div>
-                <div class="flex items-center gap-x-3 mb-4">
-                    <svg width="38" height="38" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8L26 26L44 8" stroke="#e30613" stroke-width="5" stroke-linejoin="round"/>
-                        <path d="M8 44L26 26L44 44" stroke="#e30613" stroke-width="5" stroke-linejoin="round"/>
-                        <circle cx="26" cy="26" r="7" fill="#e30613"/>
-                    </svg>
-                    <span class="font-anton text-3xl tracking-tighter">F4L</span>
-                </div>
-                <div class="text-sm text-white/60 max-w-xs">Fight For Legacy to największa i najbardziej prestiżowa gala MMA w Polsce.</div>
+    <footer class="bg-black py-12 border-t border-white/10 text-xs text-white/60">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-y-4">
+            <div>© 2026 F4L — Fight For Legacy. Wszelkie prawa zastrzeżone.</div>
+            <div class="flex gap-x-6">
+                <a href="#" class="hover:text-white">Regulamin</a>
+                <a href="#" class="hover:text-white">Polityka prywatności</a>
+                <a href="#" class="hover:text-white">Kontakt</a>
             </div>
-            
-            <div class="flex flex-col md:flex-row md:justify-end gap-y-10 md:gap-x-16 text-sm">
-                <div>
-                    <div class="font-semibold tracking-widest text-xs mb-3 text-white/70">NAWIGACJA</div>
-                    <div class="space-y-2 text-white/70">
-                        <a href="#karta-walk" class="block hover:text-white">Karta Walk</a>
-                        <a href="#social" class="block hover:text-white">Social Media</a>
-                        <a href="#" class="block hover:text-white">O Gali</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="font-semibold tracking-widest text-xs mb-3 text-white/70">KONTAKT</div>
-                    <div class="space-y-2 text-white/70">
-                        <a href="mailto:info@f4l.pl" class="block hover:text-white">info@f4l.pl</a>
-                        <div>+48 32 123 45 67</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="font-semibold tracking-widest text-xs mb-3 text-white/70">SOCIAL</div>
-                    <div class="flex gap-x-4 text-xl">
-                        <a href="#" class="hover:text-[#e30613]">𝕏</a>
-                        <a href="#" class="hover:text-[#e30613]">IG</a>
-                        <a href="#" class="hover:text-[#e30613]">FB</a>
-                        <a href="#" class="hover:text-[#e30613]">YT</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mt-16 pt-8 border-t border-white/10 text-center text-xs text-white/50">
-            © 2026 F4L — Fight For Legacy. Wszelkie prawa zastrzeżone. 
-            <span class="hidden md:inline">•</span> 
-            <span class="block md:inline mt-1 md:mt-0">Zaprojektowano z pasją do walki.</span>
+            <div>Zaprojektowano z pasją do walki.</div>
         </div>
     </footer>
 
+    <!-- EVENT MODAL -->
+    <div id="event-modal" onclick="if (event.target.id === 'event-modal') closeModal()" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-[#0a0a0a] max-w-5xl w-full max-h-[92vh] overflow-y-auto rounded-3xl border border-white/10">
+            
+            <!-- Modal Header -->
+            <div id="modal-header" class="h-80 bg-cover bg-center relative flex items-end">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30"></div>
+                <div class="relative p-10 w-full">
+                    <button onclick="closeModal()" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-white/70 hover:text-white text-3xl leading-none">×</button>
+                    
+                    <div id="modal-badge" class="inline-block px-4 py-1 text-xs tracking-widest font-bold rounded-full mb-4"></div>
+                    <div id="modal-title" class="font-oswald text-6xl tracking-tighter text-white"></div>
+                    <div id="modal-subtitle" class="text-2xl text-white/80 mt-1"></div>
+                </div>
+            </div>
+            
+            <div class="p-10">
+                <!-- Event Info -->
+                <div class="flex flex-wrap gap-x-10 gap-y-4 text-sm mb-10">
+                    <div>
+                        <div class="text-white/50 text-xs tracking-widest">DATA I GODZINA</div>
+                        <div id="modal-date" class="font-semibold text-lg"></div>
+                    </div>
+                    <div>
+                        <div class="text-white/50 text-xs tracking-widest">MIEJSCE</div>
+                        <div id="modal-venue" class="font-semibold text-lg"></div>
+                    </div>
+                    <div>
+                        <div class="text-white/50 text-xs tracking-widest">STATUS</div>
+                        <div id="modal-status" class="font-semibold text-lg"></div>
+                    </div>
+                </div>
+                
+                <!-- Fight Card Content (dynamic) -->
+                <div id="modal-fightcard">
+                    <!-- JS will inject content here -->
+                </div>
+                
+                <div class="mt-10 flex justify-center">
+                    <button onclick="buyTickets()" class="px-14 py-4 bg-[#e30613] hover:bg-[#c30410] text-sm font-semibold tracking-[1.5px] rounded-full transition-all">KUP BILETY NA TĘ GALĘ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Tailwind config
         function initTailwind() {
             tailwind.config = {
                 theme: {
                     extend: {
-                        fontFamily: {
-                            'anton': ['Anton', 'sans-serif'],
-                            'oswald': ['Oswald', 'sans-serif']
-                        }
+                        fontFamily: { 'anton': ['Anton', 'sans-serif'], 'oswald': ['Oswald', 'sans-serif'] }
                     }
                 }
             };
         }
         
-        // Countdown Timer (updated to current date simulation)
-        function startCountdown() {
-            const targetDate = new Date('2026-05-15T20:00:00').getTime();
+        // Tab switching for GALE section
+        function switchTab(btn, tab) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-active', 'bg-[#e30613]', 'text-white'));
+            btn.classList.add('tab-active', 'bg-[#e30613]', 'text-white');
             
-            const interval = setInterval(() => {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-                
-                if (distance < 0) {
-                    clearInterval(interval);
-                    document.getElementById('days').innerHTML = '00';
-                    document.getElementById('hours').innerHTML = '00';
-                    document.getElementById('minutes').innerHTML = '00';
-                    return;
-                }
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                
-                document.getElementById('days').innerHTML = String(days).padStart(2, '0');
-                document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
-                document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
-            }, 1000);
+            document.getElementById('upcoming-tab').classList.toggle('hidden', tab !== 'upcoming');
+            document.getElementById('past-tab').classList.toggle('hidden', tab !== 'past');
         }
         
-        // Scroll reveal animations
-        function initScrollReveal() {
-            const reveals = document.querySelectorAll('.fight-card, .social-card, .section-header');
+        // Event data
+        const events = {
+            'f4l-2026-05': {
+                id: 'f4l-2026-05',
+                title: 'FIGHT FOR LEGACY',
+                subtitle: '15 MAJA 2026 • ARENA GLIWICE',
+                date: '15 Maja 2026, godz. 20:00',
+                venue: 'Arena Gliwice',
+                status: 'NASTĘPNA GALA',
+                badge: 'NASTĘPNA',
+                badgeColor: 'bg-[#e30613]',
+                bgImage: 'https://picsum.photos/id/1018/1200/800',
+                type: 'upcoming',
+                fightcard: `
+                    <div class="mb-8">
+                        <div class="flex items-center gap-x-3 mb-5">
+                            <div class="px-4 py-1 bg-[#e30613] text-xs font-bold tracking-widest rounded-full">MAIN EVENT</div>
+                            <div class="flex-1 h-px bg-gradient-to-r from-[#e30613]/50 to-transparent"></div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-5 gap-4 items-center bg-[#111] rounded-2xl p-6">
+                            <div class="md:col-span-2">
+                                <img src="https://picsum.photos/id/1005/600/700" class="w-full aspect-[4/4.5] object-cover rounded-xl border border-[#e30613]/30" alt="Jan Kowboj Kowalczyk">
+                                <div class="mt-4">
+                                    <div class="font-oswald text-3xl tracking-tighter">JAN „KOWBOJ” KOWALCZYK</div>
+                                    <div class="text-xs text-white/60">18-3 • Heavyweight • Polska</div>
+                                </div>
+                            </div>
+                            
+                            <div class="md:col-span-1 flex justify-center items-center">
+                                <div class="text-center">
+                                    <div class="font-anton text-[82px] text-[#e30613] vs-glow tracking-[-4px]">VS</div>
+                                </div>
+                            </div>
+                            
+                            <div class="md:col-span-2">
+                                <img src="https://picsum.photos/id/1011/600/700" class="w-full aspect-[4/4.5] object-cover rounded-xl border border-[#e30613]/30" alt="Tomasz Górnik Nowak">
+                                <div class="mt-4 md:text-right">
+                                    <div class="font-oswald text-3xl tracking-tighter">TOMASZ „GÓRNIK” NOWAK</div>
+                                    <div class="text-xs text-white/60">22-4 • Heavyweight • Polska</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center gap-x-3 mb-5">
+                            <div class="px-4 py-1 bg-white/10 border border-white/20 text-xs font-bold tracking-widest rounded-full">CO-MAIN EVENT</div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-5 gap-4 items-center bg-[#111] rounded-2xl p-6">
+                            <div class="md:col-span-2">
+                                <img src="https://picsum.photos/id/102/600/700" class="w-full aspect-[4/4.5] object-cover rounded-xl border border-white/20" alt="Mike The Beast Zieliński">
+                                <div class="mt-4">
+                                    <div class="font-oswald text-2xl tracking-tighter">MIKE „THE BEAST” ZIELIŃSKI</div>
+                                    <div class="text-xs text-white/60">18-5 • Welterweight</div>
+                                </div>
+                            </div>
+                            
+                            <div class="md:col-span-1 flex justify-center items-center">
+                                <div class="font-anton text-6xl text-[#e30613]">VS</div>
+                            </div>
+                            
+                            <div class="md:col-span-2">
+                                <img src="https://picsum.photos/id/106/600/700" class="w-full aspect-[4/4.5] object-cover rounded-xl border border-white/20" alt="Paweł Ninja Kamiński">
+                                <div class="mt-4 md:text-right">
+                                    <div class="font-oswald text-2xl tracking-tighter">PAWEŁ „NINJA” KAMIŃSKI</div>
+                                    <div class="text-xs text-white/60">21-6 • Welterweight</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'f4l-2026-09': {
+                id: 'f4l-2026-09',
+                title: 'F4L: LEGACY II',
+                subtitle: '12 WRZEŚNIA 2026 • TAURON ARENA KRAKÓW',
+                date: '12 Września 2026, godz. 19:00',
+                venue: 'Tauron Arena Kraków',
+                status: 'WKRÓTCE BILETY',
+                badge: 'WRZESIEŃ 2026',
+                badgeColor: 'bg-white text-black',
+                bgImage: 'https://picsum.photos/id/1033/1200/800',
+                type: 'upcoming',
+                fightcard: `
+                    <div class="text-center py-12 text-white/60">
+                        <div class="text-2xl mb-4">Karta walk zostanie ogłoszona wkrótce</div>
+                        <div class="text-sm">Śledź nas na social mediach, żeby być na bieżąco z matchupami</div>
+                    </div>
+                `
+            },
+            'f4l-2025-10': {
+                id: 'f4l-2025-10',
+                title: 'F4L 01',
+                subtitle: '12 PAŹDZIERNIKA 2025 • ARENA GLIWICE',
+                date: '12 Października 2025',
+                venue: 'Arena Gliwice',
+                status: 'ZAKOŃCZONA',
+                badge: 'RECAP',
+                badgeColor: 'bg-emerald-500',
+                bgImage: 'https://picsum.photos/id/106/1200/800',
+                type: 'past',
+                fightcard: `
+                    <div class="space-y-6">
+                        <div class="bg-[#111] rounded-2xl p-6">
+                            <div class="text-xs text-emerald-400 mb-1">MAIN EVENT • HEAVYWEIGHT</div>
+                            <div class="flex justify-between items-center">
+                                <div>Jan „Kowboj” Kowalczyk <span class="text-emerald-400">(18-2)</span></div>
+                                <div class="font-bold text-emerald-400">WIN</div>
+                                <div>Tomasz „Górnik” Nowak <span class="text-white/50">(21-4)</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-[#111] rounded-2xl p-6">
+                            <div class="text-xs text-emerald-400 mb-1">CO-MAIN • WELTERWEIGHT</div>
+                            <div class="flex justify-between items-center">
+                                <div>Mike „The Beast” Zieliński</div>
+                                <div class="font-bold text-emerald-400">WIN</div>
+                                <div>Paweł „Ninja” Kamiński</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center text-xs text-white/50">Oficjalne wyniki dostępne na social mediach F4L</div>
+                `
+            },
+            'f4l-2026-02': {
+                id: 'f4l-2026-02',
+                title: 'F4L 02',
+                subtitle: '22 LUTEGO 2026 • HALA ORBITA WROCŁAW',
+                date: '22 Lutego 2026',
+                venue: 'Hala Orbita, Wrocław',
+                status: 'ZAKOŃCZONA',
+                badge: 'RECAP',
+                badgeColor: 'bg-emerald-500',
+                bgImage: 'https://picsum.photos/id/1027/1200/800',
+                type: 'past',
+                fightcard: `
+                    <div class="space-y-6">
+                        <div class="bg-[#111] rounded-2xl p-6">
+                            <div class="text-xs text-emerald-400 mb-1">MAIN EVENT • HEAVYWEIGHT TITLE</div>
+                            <div class="flex justify-between items-center">
+                                <div>Tomasz „Górnik” Nowak <span class="text-emerald-400">(22-4)</span></div>
+                                <div class="font-bold text-emerald-400">WIN • TKO 3R</div>
+                                <div>Adam „Hammer” Nowak <span class="text-white/50">(19-3)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'f4l-2025-05': {
+                id: 'f4l-2025-05',
+                title: 'F4L: DEBUT',
+                subtitle: '17 MAJA 2025 • SPODEK KATOWICE',
+                date: '17 Maja 2025',
+                venue: 'Spodek, Katowice',
+                status: 'ZAKOŃCZONA',
+                badge: 'RECAP',
+                badgeColor: 'bg-emerald-500',
+                bgImage: 'https://picsum.photos/id/160/1200/800',
+                type: 'past',
+                fightcard: `
+                    <div class="text-center py-8">
+                        <div class="text-lg">Pierwsza gala F4L w historii</div>
+                        <div class="mt-4 text-sm text-white/60">Zwycięstwa: Kowalczyk, Zieliński, Kamiński i wielu innych</div>
+                    </div>
+                `
+            }
+        }
+        
+        function showEventModal(eventId) {
+            const event = events[eventId];
+            if (!event) return;
             
+            const modal = document.getElementById('event-modal');
+            const header = document.getElementById('modal-header');
+            const title = document.getElementById('modal-title');
+            const subtitle = document.getElementById('modal-subtitle');
+            const badge = document.getElementById('modal-badge');
+            const dateEl = document.getElementById('modal-date');
+            const venueEl = document.getElementById('modal-venue');
+            const statusEl = document.getElementById('modal-status');
+            const fightcardEl = document.getElementById('modal-fightcard');
+            
+            // Set header background
+            header.style.backgroundImage = `url('${event.bgImage}')`;
+            
+            // Fill content
+            title.textContent = event.title;
+            subtitle.textContent = event.subtitle;
+            badge.textContent = event.badge;
+            badge.className = `inline-block px-4 py-1 text-xs tracking-widest font-bold rounded-full mb-4 ${event.badgeColor}`;
+            
+            dateEl.textContent = event.date;
+            venueEl.textContent = event.venue;
+            statusEl.innerHTML = event.status === 'ZAKOŃCZONA' 
+                ? `<span class="text-emerald-400">${event.status}</span>` 
+                : event.status;
+            
+            fightcardEl.innerHTML = event.fightcard;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Lock scroll
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('event-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        
+        function buyTickets() {
+            const modal = document.getElementById('event-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            
+            // Fake success
+            setTimeout(() => {
+                alert('Dziękujemy! Przekierowujemy do systemu biletowego... (demo)');
+            }, 300);
+        }
+        
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.event-card, .social-card');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -581,10 +715,7 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, {
-                threshold: 0.12,
-                rootMargin: '0px 0px -60px 0px'
-            });
+            }, { threshold: 0.1 });
             
             reveals.forEach(el => {
                 el.classList.add('reveal');
@@ -592,51 +723,46 @@
             });
         }
         
-        // Main initialization
         function init() {
             initTailwind();
-            startCountdown();
             initScrollReveal();
             
-            // Subtle parallax on hero
-            const hero = document.querySelector('header');
-            if (hero) {
-                window.addEventListener('scroll', () => {
-                    const scrolled = window.scrollY;
-                    if (scrolled < 600) {
-                        hero.style.backgroundPositionY = `${scrolled * 0.25}px`;
-                    }
-                });
-            }
+            // Default tab = upcoming
+            const firstTab = document.querySelector('.tab-btn');
+            if (firstTab) firstTab.classList.add('tab-active', 'bg-[#e30613]', 'text-white');
             
-            // Logo confetti easter egg
+            // Keyboard escape for modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('event-modal');
+                    if (!modal.classList.contains('hidden')) closeModal();
+                }
+            });
+            
+            // Logo easter egg
             const logo = document.querySelector('nav svg');
             if (logo) {
                 logo.addEventListener('click', () => {
-                    const colors = ['#e30613', '#ffffff'];
-                    for (let i = 0; i < 32; i++) {
+                    const colors = ['#e30613', '#fff'];
+                    for (let i = 0; i < 28; i++) {
                         setTimeout(() => {
-                            const particle = document.createElement('div');
-                            particle.className = 'fixed w-1.5 h-1.5 rounded-full pointer-events-none z-[9999]';
-                            particle.style.left = Math.random() * window.innerWidth + 'px';
-                            particle.style.top = '-20px';
-                            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                            document.body.appendChild(particle);
+                            const p = document.createElement('div');
+                            p.className = 'fixed w-1.5 h-1.5 rounded-full z-[200]';
+                            p.style.left = Math.random()*window.innerWidth + 'px';
+                            p.style.top = '-30px';
+                            p.style.background = colors[Math.floor(Math.random()*2)];
+                            document.body.appendChild(p);
                             
-                            const duration = Math.random() * 2200 + 2400;
-                            particle.animate([
+                            p.animate([
                                 { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                                { transform: `translateY(${window.innerHeight + 120}px) rotate(${Math.random()*180-90}deg)`, opacity: 0 }
-                            ], {
-                                duration: duration,
-                                easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
-                            }).onfinish = () => particle.remove();
-                        }, i * 6);
+                                { transform: `translateY(${window.innerHeight+150}px) rotate(${Math.random()*200-100}deg)`, opacity: 0 }
+                            ], { duration: 2400 + Math.random()*800, easing: 'cubic-bezier(0.22,1,0.36,1)' }).onfinish = () => p.remove();
+                        }, i*7);
                     }
                 });
             }
             
-            console.log('%c[F4L] Premium site initialized. Social media section active.', 'color:#e30613');
+            console.log('%c[F4L] Multi-event site initialized. Ready.', 'color:#e30613');
         }
         
         window.onload = init;
