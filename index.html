@@ -111,6 +111,23 @@
             background: rgba(17, 17, 17, 0.6);
             backdrop-filter: blur(12px);
         }
+        
+        .social-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .social-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(227 6 19 / 0.1);
+        }
+        
+        .social-icon {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .social-card:hover .social-icon {
+            transform: scale(1.1) rotate(2deg);
+        }
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-white overflow-x-hidden">
@@ -134,15 +151,17 @@
             <!-- Menu -->
             <div class="hidden md:flex items-center gap-x-10 text-sm font-medium tracking-widest">
                 <a href="#karta-walk" class="hover:text-[#e30613] transition-colors">KARTA WALK</a>
-                <a href="#bilety" class="hover:text-[#e30613] transition-colors">BILETY</a>
+                <a href="#social" class="hover:text-[#e30613] transition-colors">SOCIAL</a>
                 <a href="#" class="hover:text-[#e30613] transition-colors">O GALI</a>
             </div>
             
-            <!-- CTA Button -->
-            <button onclick="document.getElementById('bilety').scrollIntoView({ behavior: 'smooth' })" 
-                    class="px-8 py-3.5 bg-[#e30613] hover:bg-[#c30410] active:bg-[#a1030d] text-white font-semibold text-sm tracking-[1px] rounded-full flex items-center gap-x-2 transition-all hover:shadow-[0_0_25px_rgb(227,6,19,0.5)]">
-                <span>KUP BILETY</span>
-            </button>
+            <!-- Right side - subtle live indicator -->
+            <div class="hidden md:flex items-center gap-x-2 text-xs">
+                <div class="flex items-center gap-x-1.5 px-3 py-1.5 bg-white/5 rounded-full border border-white/10">
+                    <div class="w-2 h-2 bg-[#e30613] rounded-full animate-pulse"></div>
+                    <span class="tracking-widest text-white/70">LIVE UPDATES</span>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -178,17 +197,17 @@
             <div class="mt-10 flex justify-center">
                 <div class="stat-pill px-8 py-4 rounded-2xl border border-white/10 flex items-center gap-x-8 text-center">
                     <div>
-                        <div id="days" class="font-oswald text-4xl font-semibold tabular-nums">26</div>
+                        <div id="days" class="font-oswald text-4xl font-semibold tabular-nums">22</div>
                         <div class="text-[10px] tracking-widest text-white/60">DNI</div>
                     </div>
                     <div class="w-px h-8 bg-white/20"></div>
                     <div>
-                        <div id="hours" class="font-oswald text-4xl font-semibold tabular-nums">14</div>
+                        <div id="hours" class="font-oswald text-4xl font-semibold tabular-nums">11</div>
                         <div class="text-[10px] tracking-widest text-white/60">GODZIN</div>
                     </div>
                     <div class="w-px h-8 bg-white/20"></div>
                     <div>
-                        <div id="minutes" class="font-oswald text-4xl font-semibold tabular-nums">37</div>
+                        <div id="minutes" class="font-oswald text-4xl font-semibold tabular-nums">09</div>
                         <div class="text-[10px] tracking-widest text-white/60">MINUT</div>
                     </div>
                 </div>
@@ -325,76 +344,138 @@
         <div class="text-center mt-8 text-xs text-white/50 tracking-widest">PEŁNA KARTA WALK • 8 WALK • 4 TYTUŁOWE</div>
     </section>
 
-    <!-- BILETY SECTION -->
-    <section id="bilety" class="bg-[#111111] py-20 border-t border-white/10">
-        <div class="max-w-5xl mx-auto px-6">
+    <!-- SOCIAL MEDIA SECTION -->
+    <section id="social" class="bg-[#111111] py-20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-14">
-                <div class="text-[#e30613] text-sm tracking-[3px] font-semibold mb-3">LIMITED CAPACITY • 8200 MIEJSC</div>
-                <h3 class="font-oswald text-6xl tracking-tighter">ZABEZPIECZ SWOJE MIEJSCE</h3>
-                <p class="mt-4 text-xl text-white/70 max-w-md mx-auto">Ceny rosną z każdym tygodniem. Im wcześniej, tym taniej.</p>
+                <div class="inline-block px-5 py-1.5 bg-[#e30613]/10 text-[#e30613] text-xs tracking-[2.5px] font-semibold rounded-full mb-4">250 000+ FOLLOWERS</div>
+                <h2 class="font-anton text-6xl md:text-7xl tracking-tighter">ŚLEDŹ F4L</h2>
+                <p class="max-w-lg mx-auto mt-5 text-xl text-white/70">Bądź częścią legendy. Oglądaj ekskluzywne materiały, highlighty walk i kulisy przygotowań do gali.</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- VIP -->
-                <div class="bg-[#0a0a0a] border border-[#e30613]/40 rounded-3xl p-9 flex flex-col">
-                    <div>
-                        <div class="text-[#e30613] text-xs tracking-[2px]">NAJLEPSZE MIEJSCA</div>
-                        <div class="font-oswald text-5xl mt-3 tracking-tighter">499 zł</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Instagram -->
+                <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-x-4">
+                            <div class="social-icon w-14 h-14 bg-gradient-to-br from-[#f56040] via-[#e1306c] to-[#c13584] rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.849.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.667.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.76 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-2xl">Instagram</div>
+                                <div class="text-[#e30613] text-sm font-medium">@f4l_fightforlegacy</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-auto pt-8">
-                        <ul class="space-y-3 text-sm">
-                            <li class="flex items-center gap-x-3"><span class="text-[#e30613]">●</span> 1. rząd, ringside</li>
-                            <li class="flex items-center gap-x-3"><span class="text-[#e30613]">●</span> Meet &amp; Greet z zawodnikami</li>
-                            <li class="flex items-center gap-x-3"><span class="text-[#e30613]">●</span> VIP Lounge + open bar</li>
-                            <li class="flex items-center gap-x-3"><span class="text-[#e30613]">●</span> Ekskluzywny merch</li>
-                        </ul>
-                        <button onclick="buyTicket('VIP')" 
-                                class="mt-8 w-full py-4 bg-[#e30613] hover:bg-white hover:text-black transition-all font-semibold tracking-widest text-sm rounded-2xl">
-                            KUP VIP BILET
-                        </button>
+                    
+                    <div class="mt-auto pt-9">
+                        <div class="flex items-baseline gap-x-1">
+                            <div class="font-oswald text-[42px] tabular-nums tracking-tighter">142</div>
+                            <div class="text-2xl text-white/60">k</div>
+                        </div>
+                        <div class="text-xs text-white/50 -mt-1 tracking-widest">OBSERWUJĄCYCH</div>
+                        
+                        <a href="#" target="_blank" class="mt-7 block w-full py-3.5 text-center border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-sm font-semibold tracking-[1.5px] transition-all active:scale-[0.985]">
+                            OBSERWUJ NA INSTAGRAMIE
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Standard -->
-                <div class="bg-[#0a0a0a] border border-white/10 rounded-3xl p-9 flex flex-col relative">
-                    <div class="absolute -top-3 right-6 bg-white text-black text-xs px-3 py-px font-bold tracking-widest">NAJPOPULARNIEJSZE</div>
-                    <div>
-                        <div class="text-white/80 text-xs tracking-[2px]">STANDARD</div>
-                        <div class="font-oswald text-5xl mt-3 tracking-tighter">199 zł</div>
+                <!-- X (Twitter) -->
+                <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-x-4">
+                            <div class="social-icon w-14 h-14 bg-black border border-white/30 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-4xl font-black tracking-tighter">𝕏</span>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-2xl">X</div>
+                                <div class="text-[#e30613] text-sm font-medium">@F4L_MMA</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-auto pt-8">
-                        <ul class="space-y-3 text-sm text-white/80">
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Dobre miejsca (sektory A–D)</li>
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Dostęp do strefy kibica</li>
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Oficjalny program gali</li>
-                        </ul>
-                        <button onclick="buyTicket('Standard')" 
-                                class="mt-8 w-full py-4 bg-white hover:bg-[#e30613] hover:text-white text-black transition-all font-semibold tracking-widest text-sm rounded-2xl">
-                            KUP BILET STANDARD
-                        </button>
+                    
+                    <div class="mt-auto pt-9">
+                        <div class="flex items-baseline gap-x-1">
+                            <div class="font-oswald text-[42px] tabular-nums tracking-tighter">89</div>
+                            <div class="text-2xl text-white/60">k</div>
+                        </div>
+                        <div class="text-xs text-white/50 -mt-1 tracking-widest">OBSERWUJĄCYCH</div>
+                        
+                        <a href="#" target="_blank" class="mt-7 block w-full py-3.5 text-center border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-sm font-semibold tracking-[1.5px] transition-all active:scale-[0.985]">
+                            OBSERWUJ NA X
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Student -->
-                <div class="bg-[#0a0a0a] border border-white/10 rounded-3xl p-9 flex flex-col">
-                    <div>
-                        <div class="text-white/80 text-xs tracking-[2px]">STUDENT / UCZEŃ</div>
-                        <div class="font-oswald text-5xl mt-3 tracking-tighter">129 zł</div>
+                <!-- Facebook -->
+                <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-x-4">
+                            <div class="social-icon w-14 h-14 bg-[#1877f2] rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-2xl">Facebook</div>
+                                <div class="text-[#e30613] text-sm font-medium">Fight For Legacy</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-auto pt-8">
-                        <ul class="space-y-3 text-sm text-white/80">
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Miejsca w sektorach górnych</li>
-                            <li class="flex items-center gap-x-3"><span class="text-white/60">●</span> Legitymacja wymagana przy wejściu</li>
-                        </ul>
-                        <button onclick="buyTicket('Student')" 
-                                class="mt-8 w-full py-4 border border-white/30 hover:bg-white/10 transition-all font-semibold tracking-widest text-sm rounded-2xl">
-                            KUP BILET STUDENT
-                        </button>
+                    
+                    <div class="mt-auto pt-9">
+                        <div class="flex items-baseline gap-x-1">
+                            <div class="font-oswald text-[42px] tabular-nums tracking-tighter">67</div>
+                            <div class="text-2xl text-white/60">k</div>
+                        </div>
+                        <div class="text-xs text-white/50 -mt-1 tracking-widest">POLUBIEŃ</div>
+                        
+                        <a href="#" target="_blank" class="mt-7 block w-full py-3.5 text-center border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-sm font-semibold tracking-[1.5px] transition-all active:scale-[0.985]">
+                            POLUB NA FACEBOOKU
+                        </a>
                     </div>
                 </div>
+                
+                <!-- YouTube -->
+                <div class="social-card group bg-[#0a0a0a] border border-white/10 hover:border-[#e30613]/40 rounded-3xl p-8 flex flex-col premium-shadow">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-x-4">
+                            <div class="social-icon w-14 h-14 bg-[#ff0000] rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-2xl">YouTube</div>
+                                <div class="text-[#e30613] text-sm font-medium">F4L Official</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-auto pt-9">
+                        <div class="flex items-baseline gap-x-1">
+                            <div class="font-oswald text-[42px] tabular-nums tracking-tighter">214</div>
+                            <div class="text-2xl text-white/60">k</div>
+                        </div>
+                        <div class="text-xs text-white/50 -mt-1 tracking-widest">SUBSKRYPCJI</div>
+                        
+                        <a href="#" target="_blank" class="mt-7 block w-full py-3.5 text-center border border-white/20 group-hover:border-[#e30613] group-hover:text-[#e30613] rounded-2xl text-sm font-semibold tracking-[1.5px] transition-all active:scale-[0.985]">
+                            SUBSKRYBUJ KANAŁ
+                        </a>
+                    </div>
+                </div>
+                
             </div>
             
-            <div class="text-center mt-8 text-xs text-white/50">Bilety dostępne wyłącznie przez oficjalną stronę • Płatność kartą / BLIK / Przelewy24</div>
+            <div class="text-center mt-12">
+                <div class="inline-flex items-center gap-x-2 text-sm text-white/60">
+                    <span>Oficjalne profile F4L • Aktualizacje na żywo z przygotowań</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -417,9 +498,9 @@
                 <div>
                     <div class="font-semibold tracking-widest text-xs mb-3 text-white/70">NAWIGACJA</div>
                     <div class="space-y-2 text-white/70">
-                        <a href="#" class="block hover:text-white">Karta Walk</a>
-                        <a href="#" class="block hover:text-white">Bilety</a>
-                        <a href="#" class="block hover:text-white">Zawodnicy</a>
+                        <a href="#karta-walk" class="block hover:text-white">Karta Walk</a>
+                        <a href="#social" class="block hover:text-white">Social Media</a>
+                        <a href="#" class="block hover:text-white">O Gali</a>
                     </div>
                 </div>
                 <div>
@@ -435,6 +516,7 @@
                         <a href="#" class="hover:text-[#e30613]">𝕏</a>
                         <a href="#" class="hover:text-[#e30613]">IG</a>
                         <a href="#" class="hover:text-[#e30613]">FB</a>
+                        <a href="#" class="hover:text-[#e30613]">YT</a>
                     </div>
                 </div>
             </div>
@@ -447,12 +529,9 @@
         </div>
     </footer>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Tailwind config
         function initTailwind() {
-            document.documentElement.style.setProperty('--accent', '#e30613');
-            
             tailwind.config = {
                 theme: {
                     extend: {
@@ -465,7 +544,7 @@
             };
         }
         
-        // Countdown Timer
+        // Countdown Timer (updated to current date simulation)
         function startCountdown() {
             const targetDate = new Date('2026-05-15T20:00:00').getTime();
             
@@ -493,7 +572,7 @@
         
         // Scroll reveal animations
         function initScrollReveal() {
-            const reveals = document.querySelectorAll('.fight-card, .section-header');
+            const reveals = document.querySelectorAll('.fight-card, .social-card, .section-header');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -503,8 +582,8 @@
                     }
                 });
             }, {
-                threshold: 0.15,
-                rootMargin: '0px 0px -80px 0px'
+                threshold: 0.12,
+                rootMargin: '0px 0px -60px 0px'
             });
             
             reveals.forEach(el => {
@@ -513,91 +592,51 @@
             });
         }
         
-        // Ticket purchase simulation
-        function buyTicket(type) {
-            const modal = document.createElement('div');
-            modal.innerHTML = `
-                <div class="fixed inset-0 bg-black/90 flex items-center justify-center z-[100]" onclick="this.remove()">
-                    <div onclick="event.stopImmediatePropagation()" class="bg-[#111] max-w-md w-full mx-4 rounded-3xl p-9 border border-[#e30613]/30">
-                        <div class="text-center">
-                            <div class="mx-auto w-16 h-16 bg-[#e30613] rounded-2xl flex items-center justify-center mb-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5z" />
-                                </svg>
-                            </div>
-                            
-                            <h4 class="font-oswald text-3xl tracking-tight">Dziękujemy!</h4>
-                            <p class="mt-3 text-white/70">Twój bilet <span class="font-semibold text-white">${type}</span> został zarezerwowany.</p>
-                            
-                            <div class="mt-8 text-xs text-white/50">Potwierdzenie wysłaliśmy na Twój adres e-mail.<br>Do zobaczenia 15 maja w Gliwicach!</div>
-                            
-                            <button onclick="this.closest('.fixed').remove()" 
-                                    class="mt-8 w-full py-4 text-sm font-semibold tracking-widest border border-white/30 hover:bg-white hover:text-black transition-colors rounded-2xl">
-                                ZAMKNIJ
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-        
-        // Keyboard shortcut hint (for fun)
-        function initKeyboardHint() {
-            document.addEventListener('keydown', function(e) {
-                if (e.key === '?' && document.activeElement.tagName === 'BODY') {
-                    e.preventDefault();
-                    const karta = document.getElementById('karta-walk');
-                    karta.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        }
-        
         // Main initialization
         function init() {
             initTailwind();
             startCountdown();
             initScrollReveal();
-            initKeyboardHint();
             
-            // Subtle parallax on hero (optional premium touch)
+            // Subtle parallax on hero
             const hero = document.querySelector('header');
             if (hero) {
                 window.addEventListener('scroll', () => {
                     const scrolled = window.scrollY;
-                    hero.style.backgroundPositionY = `${scrolled * 0.3}px`;
-                });
-            }
-            
-            // Easter egg: click logo → confetti
-            const logo = document.querySelector('nav svg');
-            if (logo) {
-                logo.addEventListener('click', () => {
-                    const colors = ['#e30613', '#ffffff'];
-                    for (let i = 0; i < 28; i++) {
-                        setTimeout(() => {
-                            const particle = document.createElement('div');
-                            particle.className = 'fixed w-1.5 h-1.5 rounded-full pointer-events-none';
-                            particle.style.left = Math.random() * window.innerWidth + 'px';
-                            particle.style.top = '-10px';
-                            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                            particle.style.zIndex = '9999';
-                            document.body.appendChild(particle);
-                            
-                            const duration = Math.random() * 1800 + 2200;
-                            particle.animate([
-                                { transform: 'translateY(0)', opacity: 1 },
-                                { transform: `translateY(${window.innerHeight + 100}px)`, opacity: 0 }
-                            ], {
-                                duration: duration,
-                                easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
-                            }).onfinish = () => particle.remove();
-                        }, i * 8);
+                    if (scrolled < 600) {
+                        hero.style.backgroundPositionY = `${scrolled * 0.25}px`;
                     }
                 });
             }
             
-            console.log('%c[F4L] Premium site initialized. Ready for GitHub Pages.', 'color:#e30613');
+            // Logo confetti easter egg
+            const logo = document.querySelector('nav svg');
+            if (logo) {
+                logo.addEventListener('click', () => {
+                    const colors = ['#e30613', '#ffffff'];
+                    for (let i = 0; i < 32; i++) {
+                        setTimeout(() => {
+                            const particle = document.createElement('div');
+                            particle.className = 'fixed w-1.5 h-1.5 rounded-full pointer-events-none z-[9999]';
+                            particle.style.left = Math.random() * window.innerWidth + 'px';
+                            particle.style.top = '-20px';
+                            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                            document.body.appendChild(particle);
+                            
+                            const duration = Math.random() * 2200 + 2400;
+                            particle.animate([
+                                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                                { transform: `translateY(${window.innerHeight + 120}px) rotate(${Math.random()*180-90}deg)`, opacity: 0 }
+                            ], {
+                                duration: duration,
+                                easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+                            }).onfinish = () => particle.remove();
+                        }, i * 6);
+                    }
+                });
+            }
+            
+            console.log('%c[F4L] Premium site initialized. Social media section active.', 'color:#e30613');
         }
         
         window.onload = init;
